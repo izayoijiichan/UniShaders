@@ -142,7 +142,7 @@ namespace UniParticleShader
         /// </summary>
         /// <param name="material"></param>
         /// <returns></returns>
-        private static BlendMode GetBlendMode(Material material)
+        public static BlendMode GetBlendMode(Material material)
         {
             BlendMode blendMode = BlendMode.Opaque;
 
@@ -184,7 +184,7 @@ namespace UniParticleShader
         /// </summary>
         /// <param name="material"></param>
         /// <returns></returns>
-        private static ColorMode GetColorMode(Material material)
+        public static ColorMode GetColorMode(Material material)
         {
             ColorMode colorMode = ColorMode.Multiply;
 

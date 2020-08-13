@@ -186,24 +186,24 @@ namespace UniParticleShader
             {
                 case ColorMode.Multiply:
                     SetKeyword(material, Keyword.ColorOverlayOn, false);
-                    SetKeyword(material, Keyword.ColorAddSubDiffOn, false);
+                    SetKeyword(material, Keyword.ColorColorOn, false);
                     SetKeyword(material, Keyword.ColorAddSubDiffOn, false);
                     break;
                 case ColorMode.Overlay:
                     SetKeyword(material, Keyword.ColorOverlayOn, true);
-                    SetKeyword(material, Keyword.ColorAddSubDiffOn, false);
+                    SetKeyword(material, Keyword.ColorColorOn, false);
                     SetKeyword(material, Keyword.ColorAddSubDiffOn, false);
                     break;
                 case ColorMode.Color:
                     SetKeyword(material, Keyword.ColorOverlayOn, false);
-                    SetKeyword(material, Keyword.ColorAddSubDiffOn, true);
+                    SetKeyword(material, Keyword.ColorColorOn, true);
                     SetKeyword(material, Keyword.ColorAddSubDiffOn, false);
                     break;
                 case ColorMode.Additive:
                 case ColorMode.Subtractive:
                 case ColorMode.Difference:
                     SetKeyword(material, Keyword.ColorOverlayOn, false);
-                    SetKeyword(material, Keyword.ColorAddSubDiffOn, false);
+                    SetKeyword(material, Keyword.ColorColorOn, false);
                     SetKeyword(material, Keyword.ColorAddSubDiffOn, true);
                     break;
             }
