@@ -1,8 +1,8 @@
 {
-  "name": "izayoi.unishaders",
+  "name": "com.izayoi.unishaders",
   "displayName": "UniShaders",
   "description": "UniShaders is utility scripts to get/set Unity shader parameters. (standard, particle, skybox)",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "tool",
   "category": "",
   "keywords": [
@@ -13,13 +13,12 @@
     "particle"
   ],
   "unity": "2018.4",
-  "unityRelease": "25f1",
   "author": {
     "name" : "Izayoi Jiichan"
   },
   "license": {
     "type": "MIT",
-    "url": "https://github.com/izayoijiichan/UniShaders/tree/master/LICENSE.md"
+    "url": "https://github.com/izayoijiichan/UniShaders/tree/main/LICENSE.md"
   },
   "repository": {
     "type": "git",
