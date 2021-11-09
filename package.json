@@ -1,8 +1,8 @@
 {
   "name": "com.izayoi.unishaders",
   "displayName": "UniShaders",
-  "description": "UniShaders is utility scripts to get/set Unity shader parameters. (standard, particle, skybox)",
-  "version": "1.1.0",
+  "description": "UniShaders is utility scripts to get/set Unity shader parameters. (standard, particle, skybox, HDRP)",
+  "version": "1.2.0",
   "type": "tool",
   "category": "",
   "keywords": [
@@ -10,9 +10,10 @@
     "shader",
     "standard",
     "skybox",
-    "particle"
+    "particle",
+    "HDRP"
   ],
-  "unity": "2018.4",
+  "unity": "2019.3",
   "author": {
     "name" : "Izayoi Jiichan"
   },

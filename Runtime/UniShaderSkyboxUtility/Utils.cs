@@ -2,10 +2,10 @@
 // @Namespace : UniSkyboxShader
 // @Class     : Utils
 // ----------------------------------------------------------------------
-using System;
-
 namespace UniSkyboxShader
 {
+    using System;
+
     /// <summary>
     /// 
     /// </summary>

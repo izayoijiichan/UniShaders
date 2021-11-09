@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.2.0] - 2021-11-10
+- Features
+  - `UniShaderHdrpUtility` has been added and `HDRP/Eye`, `HDRP/Hair` and `HDRP/Lit` shader are now available.
+- Changes
+  - The corresponding minimum version of Unity is 2019.3.
+
 ## [1.1.0] - 2021-03-18
 - Changes
   - Changed the package name from `izayoi.unishaders` to `com.izayoi.unishaders`.

@@ -6,6 +6,9 @@ ___
 ## Shaders
 
 - Standard
+- HDRP/Eye
+- HDRP/Hair
+- HDRP/Lit
 - Particles/Standard Surface
 - Particles/Standard Unlit
 - Skybox/6 Sided
@@ -15,18 +18,20 @@ ___
 
 ## Assembly
 
-- UniShader.Standard.Utility..dll
+- UniShader.HDRP.Utility.dll
+- UniShader.Standard.Utility.dll
 - UniShader.Standard.Particle.Utility.dll
 - UniShader.Skybox.Utility.dll
 
 ## Namespace
 
-- UniStandardShader
+- UniHdrpShader
 - UniParticleShader
 - UniSkyboxShader
+- UniStandardShader
 
 ___
-Last updated: 7 August, 2020  
+Last updated: 10 November, 2021  
 Editor: Izayoi Jiichan
 
 *Copyright (C) 2020 Izayoi Jiichan. All Rights Reserved.*
