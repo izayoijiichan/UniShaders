@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.3.0] - 2022-02-27
+- Features
+  - `UniShaderUrpUtility` has been added and `Universal Render Pipeline/Lit` shader are now available.
+
 ## [1.2.0] - 2021-11-10
 - Features
   - `UniShaderHdrpUtility` has been added and `HDRP/Eye`, `HDRP/Hair` and `HDRP/Lit` shader are now available.

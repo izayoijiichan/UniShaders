@@ -15,6 +15,7 @@ ___
 - Skybox/Cubemap
 - Skybox/Panoramic
 - Skybox/Procedural
+- Universal Render Pipeline/Lit
 
 ## Assembly
 
@@ -22,6 +23,7 @@ ___
 - UniShader.Standard.Utility.dll
 - UniShader.Standard.Particle.Utility.dll
 - UniShader.Skybox.Utility.dll
+- UniShader.URP.Utility.dll
 
 ## Namespace
 
@@ -29,9 +31,10 @@ ___
 - UniParticleShader
 - UniSkyboxShader
 - UniStandardShader
+- UniUrpShader
 
 ___
-Last updated: 10 November, 2021  
+Last updated: 27 February, 2022  
 Editor: Izayoi Jiichan
 
-*Copyright (C) 2020 Izayoi Jiichan. All Rights Reserved.*
+*Copyright (C) 2020-2022 Izayoi Jiichan. All Rights Reserved.*

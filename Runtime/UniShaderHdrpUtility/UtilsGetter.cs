@@ -231,7 +231,7 @@ namespace UniHdrpShader
         /// </summary>
         /// <param name="material"></param>
         /// <returns></returns>
-            private static HdrpLitDefinition GetHdrpLitParametersFromMaterial(Material material)
+        private static HdrpLitDefinition GetHdrpLitParametersFromMaterial(Material material)
         {
             return new HdrpLitDefinition
             {
