@@ -16,6 +16,8 @@ ___
 - Skybox/Panoramic
 - Skybox/Procedural
 - Universal Render Pipeline/Lit
+- Universal Render Pipeline/Simple Lit
+- Universal Render Pipeline/Unlit
 
 ## Assembly
 
@@ -34,7 +36,7 @@ ___
 - UniUrpShader
 
 ___
-Last updated: 27 February, 2022  
+Last updated: 20 May, 2022  
 Editor: Izayoi Jiichan
 
 *Copyright (C) 2020-2022 Izayoi Jiichan. All Rights Reserved.*

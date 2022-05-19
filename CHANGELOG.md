@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.4.0] - 2022-05-20
+- Features
+  - The `Universal Render Pipeline/Simple Lit` and `Universal Render Pipeline/Unlit` shaders are now available in `UniShaderUrpUtility`.
+
 ## [1.3.0] - 2022-02-27
 - Features
   - `UniShaderUrpUtility` has been added and `Universal Render Pipeline/Lit` shader are now available.

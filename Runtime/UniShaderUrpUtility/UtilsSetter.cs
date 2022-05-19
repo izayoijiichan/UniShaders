@@ -23,6 +23,14 @@ namespace UniUrpShader
             {
                 SetUrpLitParametersToMaterial(material, parameters as UrpLitDefinition);
             }
+            else if (type == UrpSimpleLitDefinitionType)
+            {
+                SetUrpSimpleLitParametersToMaterial(material, parameters as UrpSimpleLitDefinition);
+            }
+            else if (type == UrpUnlitDefinitionType)
+            {
+                SetUrpUnlitParametersToMaterial(material, parameters as UrpUnlitDefinition);
+            }
             else
             {
                 throw new NotSupportedException();
@@ -30,40 +38,18 @@ namespace UniUrpShader
         }
 
         /// <summary>
-        /// Set the parameter value to the material.
+        /// Set the keyword value to the material.
         /// </summary>
         /// <param name="material"></param>
         /// <param name="parameters"></param>
-        private static void SetUrpLitParametersToMaterial(Material material, UrpLitDefinition parameters)
+        private static void SetBasicUrpKeywordsToMaterial(Material material, UrpDefinitionBase parameters)
         {
             // Material Keywords
-
-            SetKeyword(material, Keyword.NormalMap, (parameters.BumpMap != null));
-            SetKeyword(material, Keyword.ParallaxMap, (parameters.ParallaxMap != null));
-
-            SetKeyword(material, Keyword.ReveiveShadowsOff, (parameters.ReceiveShadows == false));
-
-            // TODO
-            SetKeyword(material, Keyword.DetailMulx2, (parameters.DetailAlbedoMap != null));
-            SetKeyword(material, Keyword.DetailScaled, (parameters.DetailAlbedoMapScale != 1.0f));
 
             SetKeyword(material, Keyword.SurfaceTypeTransparent, (parameters.Surface == SurfaceType.Transparent));
 
             SetKeyword(material, Keyword.AlphaTestOn, (parameters.Blend == BlendMode.Alpha));
             SetKeyword(material, Keyword.AlphaPreMultiplyOn, (parameters.Blend == BlendMode.Premultiply));
-
-            SetKeyword(material, Keyword.Emission, (parameters.EmissionMap != null));
-
-            SetKeyword(material, Keyword.MetallicSpecGlossMap, (parameters.SpecGlossMap != null));
-            SetKeyword(material, Keyword.SmoothnessTextureAlbedoChannelA, (parameters.SmoothnessTextureChannel == SmoothnessTextureChannel.AlbedoAlpha));
-
-            SetKeyword(material, Keyword.OcclusionMap, (parameters.OcclusionMap != null));
-
-            SetKeyword(material, Keyword.SpecularHighlightsOff, (parameters.SpecularHighlights == false));
-            SetKeyword(material, Keyword.EnvironmentReflectionsOff, (parameters.EnvironmentReflections == false));
-
-            // TODO
-            //SetKeyword(material, Keyword.SpecularSetup, false);
 
             // Universal Pipeline keywords
             //SetKeyword(material, Keyword.MainLightShadows, false);
@@ -107,9 +93,15 @@ namespace UniUrpShader
             //SetKeyword(material, Keyword.CastingPunctualLightShadow, false);
             //SetKeyword(material, Keyword.GBufferNormalsOct, false);
             //SetKeyword(material, Keyword.RenderPassEnabled, false);
+        }
 
-            SetInt(material, Property.WorkflowMode, (int)parameters.WorkflowMode);
-
+        /// <summary>
+        /// Set the parameter value to the material.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="parameters"></param>
+        private static void SetBasicUrpParametersToMaterial(Material material, UrpDefinitionBase parameters)
+        {
             // Blending state
             SetSurfaceType(material, parameters.Surface, parameters.Blend);
 
@@ -124,6 +116,55 @@ namespace UniUrpShader
             SetBool(material, Property.AlphaClip, parameters.AlphaClip);
             SetFloat(material, Property.Cutoff, parameters.Cutoff);
 
+            // Base Map
+            SetColor(material, Property.BaseColor, parameters.BaseColor);
+            SetTexture(material, Property.BaseMap, parameters.BaseMap);
+
+            // Editmode Properties
+            SetInt(material, Property.QueueOffset, parameters.QueueOffset);
+
+            // Obsolete Properties
+            //SetTexture(material, Property.MainTex, parameters.MainTex);
+            //SetColor(material, Property.Color, parameters.Color);
+        }
+
+        /// <summary>
+        /// Set the URP Lit parameter value to the material.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="parameters"></param>
+        private static void SetUrpLitParametersToMaterial(Material material, UrpLitDefinition parameters)
+        {
+            // Material Keywords
+            SetBasicUrpKeywordsToMaterial(material, parameters);
+
+            // TODO
+            //SetKeyword(material, Keyword.SpecularSetup, false);
+
+            SetKeyword(material, Keyword.NormalMap, (parameters.BumpMap != null));
+            SetKeyword(material, Keyword.ParallaxMap, (parameters.ParallaxMap != null));
+
+            SetKeyword(material, Keyword.ReveiveShadowsOff, (parameters.ReceiveShadows == false));
+
+            // TODO
+            SetKeyword(material, Keyword.DetailMulx2, (parameters.DetailAlbedoMap != null));
+            SetKeyword(material, Keyword.DetailScaled, (parameters.DetailAlbedoMapScale != 1.0f));
+
+            SetKeyword(material, Keyword.Emission, (parameters.EmissionMap != null));
+
+            SetKeyword(material, Keyword.MetallicSpecGlossMap, (parameters.SpecGlossMap != null));
+            SetKeyword(material, Keyword.SmoothnessTextureAlbedoChannelA, (parameters.SmoothnessTextureChannel == SmoothnessTextureChannel.AlbedoAlpha));
+
+            SetKeyword(material, Keyword.OcclusionMap, (parameters.OcclusionMap != null));
+
+            SetKeyword(material, Keyword.SpecularHighlightsOff, (parameters.SpecularHighlights == false));
+            SetKeyword(material, Keyword.EnvironmentReflectionsOff, (parameters.EnvironmentReflections == false));
+
+            SetBasicUrpParametersToMaterial(material, parameters);
+
+            SetInt(material, Property.WorkflowMode, (int)parameters.WorkflowMode);
+
+            // Blending state
             SetBool(material, Property.ReceiveShadows, parameters.ReceiveShadows);
 
             // Base Map
@@ -172,12 +213,7 @@ namespace UniUrpShader
             SetBool(material, Property.ClearCoatMask, parameters.ClearCoatMask);
             SetBool(material, Property.ClearCoatSmoothness, parameters.ClearCoatSmoothness);
 
-            SetInt(material, Property.QueueOffset, parameters.QueueOffset);
-
             // Obsolete Properties
-            //SetTexture(material, Property.MainTex, parameters.MainTex);
-            //SetColor(material, Property.Color, parameters.Color);
-
             //SetFloat(material, Property.GlossMapScale, parameters.GlossMapScale);
             //SetFloat(material, Property.Glossiness, parameters.Glossiness);
             //SetFloat(material, Property.GlossyReflections, parameters.GlossyReflections);
@@ -185,6 +221,77 @@ namespace UniUrpShader
             //SetTexture2DArray(material, Property.UnityLightmaps, parameters.UnityLightmaps);
             //SetTexture2DArray(material, Property.UnityLightmapsInd, parameters.UnityLightmapsInd);
             //SetTexture2DArray(material, Property.UnityShadowMasks, parameters.UnityShadowMasks);
+        }
+
+        /// <summary>
+        /// Set the URP Simple Lit parameter value to the material.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="parameters"></param>
+        private static void SetUrpSimpleLitParametersToMaterial(Material material, UrpSimpleLitDefinition parameters)
+        {
+            // Material Keywords
+            SetBasicUrpKeywordsToMaterial(material, parameters);
+
+            SetKeyword(material, Keyword.NormalMap, (parameters.BumpMap != null));
+
+            SetKeyword(material, Keyword.ReveiveShadowsOff, (parameters.ReceiveShadows == false));
+
+            SetKeyword(material, Keyword.Emission, (parameters.EmissionMap != null));
+
+            SetKeyword(material, Keyword.SpecularHighlightsOff, (parameters.SpecularHighlights == false));
+
+            SetBasicUrpParametersToMaterial(material, parameters);
+
+            // Blending state
+            SetFloat(material, Property.BlendModePreserveSpecular, parameters.BlendModePreserveSpecular);
+            SetBool(material, Property.ReceiveShadows, parameters.ReceiveShadows);
+
+            // Specular Gloss Map
+            SetFloat(material, Property.Smoothness, parameters.Smoothness);
+
+            SetColor(material, Property.SpecColor, parameters.SpecColor);
+            SetTexture(material, Property.SpecGlossMap, parameters.SpecGlossMap);
+
+            SetFloat(material, Property.SmoothnessSource, parameters.SmoothnessSource);
+
+            SetBool(material, Property.SpecularHighlights, parameters.SpecularHighlights);
+
+            // Bump Map (Normal Map)
+            SetTexture(material, Property.BumpMap, parameters.BumpMap);
+            SetFloat(material, Property.BumpScale, parameters.BumpScale);
+
+            // Emission Map
+            SetColor(material, Property.EmissionColor, parameters.EmissionColor);
+            SetTexture(material, Property.EmissionMap, parameters.EmissionMap);
+
+            // Obsolete Properties
+            //SetFloat(material, Property.Shininess, parameters.Shininess);
+            //SetFloat(material, Property.GlossinessSource, parameters.GlossinessSource);
+            //SetFloat(material, Property.SpecSource, parameters.SpecSource);
+
+            //SetTexture2DArray(material, Property.UnityLightmaps, parameters.UnityLightmaps);
+            //SetTexture2DArray(material, Property.UnityLightmapsInd, parameters.UnityLightmapsInd);
+            //SetTexture2DArray(material, Property.UnityShadowMasks, parameters.UnityShadowMasks);
+        }
+
+        /// <summary>
+        /// Set the URP Unlit parameter value to the material.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="parameters"></param>
+        private static void SetUrpUnlitParametersToMaterial(Material material, UrpUnlitDefinition parameters)
+        {
+            // Material Keywords
+            SetBasicUrpKeywordsToMaterial(material, parameters);
+
+            SetBasicUrpParametersToMaterial(material, parameters);
+
+            // Blending state
+            SetFloat(material, Property.BlendOp, parameters.BlendOp);
+
+            // Obsolete Properties
+            //SetFloat(material, Property.SampleGI, parameters.SampleGI);
         }
 
         /// <summary>

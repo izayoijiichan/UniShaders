@@ -23,6 +23,14 @@ namespace UniUrpShader
             {
                 return GetUrpLitParametersFromMaterial(material) as T;
             }
+            else if (type == UrpSimpleLitDefinitionType)
+            {
+                return GetUrpSimpleLitParametersFromMaterial(material) as T;
+            }
+            else if (type == UrpUnlitDefinitionType)
+            {
+                return GetUrpUnlitParametersFromMaterial(material) as T;
+            }
             else
             {
                 throw new NotSupportedException();
@@ -30,7 +38,7 @@ namespace UniUrpShader
         }
 
         /// <summary>
-        /// 
+        /// Get the URP Lit parameters from the material.
         /// </summary>
         /// <param name="material"></param>
         /// <returns></returns>
@@ -111,6 +119,107 @@ namespace UniUrpShader
                 //UnityLightmaps = GetTexture2DArray(material, Property.UnityLightmaps),
                 //UnityLightmapsInd = GetTexture2DArray(material, Property.UnityLightmapsInd),
                 //UnityShadowMasks = GetTexture2DArray(material, Property.UnityShadowMasks),
+            };
+        }
+
+        /// <summary>
+        /// Get the URP SimpleLit parameters from the material.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <returns></returns>
+        private static UrpSimpleLitDefinition GetUrpSimpleLitParametersFromMaterial(Material material)
+        {
+            return new UrpSimpleLitDefinition
+            {
+                // Blending state
+                Surface = GetEnum<SurfaceType>(material, Property.Surface, SurfaceType.Opaque),
+                Blend = GetEnum<BlendMode>(material, Property.Blend, BlendMode.Alpha),
+                Cull = GetEnum<CullMode>(material, Property.Cull, CullMode.Back),
+
+                SrcBlend = GetFloat(material, Property.SrcBlend),
+                DstBlend = GetFloat(material, Property.DstBlend),
+                ZWrite = GetBool(material, Property.ZWrite),
+
+                AlphaClip = GetBool(material, Property.AlphaClip),
+                Cutoff = GetFloat(material, Property.Cutoff),
+
+                BlendModePreserveSpecular = GetFloat(material, Property.BlendModePreserveSpecular),
+
+                ReceiveShadows = GetBool(material, Property.ReceiveShadows),
+
+                // Base Map
+                BaseColor = GetColor(material, Property.BaseColor),
+                BaseMap = GetTexture(material, Property.BaseMap),
+
+                // Specular Gloss Map
+                Smoothness = GetFloat(material, Property.Smoothness),
+
+                SpecColor = GetColor(material, Property.SpecColor),
+                SpecGlossMap = GetTexture(material, Property.SpecGlossMap),
+
+                SmoothnessSource = GetFloat(material, Property.SmoothnessSource),
+
+                SpecularHighlights = GetBool(material, Property.SpecularHighlights),
+
+                // Bump Map (Normal Map)
+                BumpMap = GetTexture(material, Property.BumpMap),
+                BumpScale = GetFloat(material, Property.BumpScale),
+
+                // Emission Map
+                EmissionColor = GetColor(material, Property.EmissionColor),
+                EmissionMap = GetTexture(material, Property.EmissionMap),
+
+                // Editmode Properties
+                QueueOffset = GetInt(material, Property.QueueOffset),
+
+                // Obsolete Properties
+                //MainTex = GetTexture(material, Property.MainTex),
+                //Color = GetColor(material, Property.Color),
+
+                //Shininess = GetFloat(material, Property.Shininess),
+                //GlossinessSource = GetFloat(material, Property.GlossinessSource),
+                //SpecSource = GetFloat(material, Property.SpecSource),
+
+                //UnityLightmaps = GetTexture2DArray(material, Property.UnityLightmaps),
+                //UnityLightmapsInd = GetTexture2DArray(material, Property.UnityLightmapsInd),
+                //UnityShadowMasks = GetTexture2DArray(material, Property.UnityShadowMasks),
+            };
+        }
+
+        /// <summary>
+        /// Get the URP Unlit parameters from the material.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <returns></returns>
+        private static UrpUnlitDefinition GetUrpUnlitParametersFromMaterial(Material material)
+        {
+            return new UrpUnlitDefinition
+            {
+                // Blending state
+                Surface = GetEnum<SurfaceType>(material, Property.Surface, SurfaceType.Opaque),
+                Blend = GetEnum<BlendMode>(material, Property.Blend, BlendMode.Alpha),
+                Cull = GetEnum<CullMode>(material, Property.Cull, CullMode.Back),
+
+                SrcBlend = GetFloat(material, Property.SrcBlend),
+                DstBlend = GetFloat(material, Property.DstBlend),
+                ZWrite = GetBool(material, Property.ZWrite),
+
+                AlphaClip = GetBool(material, Property.AlphaClip),
+                Cutoff = GetFloat(material, Property.Cutoff),
+
+                BlendOp = GetFloat(material, Property.BlendOp),
+
+                // Base Map
+                BaseColor = GetColor(material, Property.BaseColor),
+                BaseMap = GetTexture(material, Property.BaseMap),
+
+                // Editmode Properties
+                QueueOffset = GetInt(material, Property.QueueOffset),
+
+                // Obsolete Properties
+                //MainTex = GetTexture(material, Property.MainTex),
+                //Color = GetColor(material, Property.Color),
+                //SampleGI = GetFloat(material, Property.SampleGI),
             };
         }
 
