@@ -5,6 +5,7 @@
 namespace UniUrpShader
 {
     using System;
+    using UnityEngine.Rendering;
 
     /// <summary>
     /// Universal Render Pipeline/Unlit Definition
@@ -17,9 +18,9 @@ namespace UniUrpShader
     {
         #region Properties
 
-        /// <summary>Blend Op</summary>
-        //[DefaultValue(0.0f)]
-        public float BlendOp { get; set; }
+        /// <summary>Blend Operator</summary>
+        //[DefaultValue(BlendOp.Add)]
+        public BlendOp BlendOp { get; set; }
 
         #endregion
 

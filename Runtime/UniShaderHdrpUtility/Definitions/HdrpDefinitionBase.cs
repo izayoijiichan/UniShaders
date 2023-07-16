@@ -66,20 +66,20 @@ namespace UniHdrpShader
         public BlendMode BlendMode { get; set; }
 
         /// <summary>Src Blend</summary>
-        //[DefaultValue(1.0f)]
-        public float SrcBlend { get; set; }
+        //[DefaultValue(BlendMode.One)]
+        public UnityEngine.Rendering.BlendMode SrcBlend { get; set; }
 
         /// <summary>Dst Blend</summary>
-        //[DefaultValue(0.0f)]
-        public float DstBlend { get; set; }
+        //[DefaultValue(BlendMode.Zero)]
+        public UnityEngine.Rendering.BlendMode DstBlend { get; set; }
 
         /// <summary>Alpha Src Blend</summary>
-        //[DefaultValue(1.0f)]
-        public float AlphaSrcBlend { get; set; }
+        //[DefaultValue(BlendMode.One)]
+        public UnityEngine.Rendering.BlendMode AlphaSrcBlend { get; set; }
 
         /// <summary>Alpha Dst Blend</summary>
-        //[DefaultValue(0.0f)]
-        public float AlphaDstBlend { get; set; }
+        //[DefaultValue(BlendMode.Zero)]
+        public UnityEngine.Rendering.BlendMode AlphaDstBlend { get; set; }
 
         /// <summary>Alpha to Mask</summary>
         //[DefaultValue(false)]
@@ -151,43 +151,43 @@ namespace UniHdrpShader
 
         /// <summary>Stencil Ref</summary>
         //[DefaultValue(0)]  // StencilUsage.Clear
-        public int StencilRef { get; set; }
+        public StencilUsage StencilRef { get; set; }
 
         /// <summary>Stencil Ref Depth</summary>
         //[DefaultValue(0)]  // Nothing
-        public int StencilRefDepth { get; set; }
+        public StencilUsage StencilRefDepth { get; set; }
 
         /// <summary>Stencil Ref Distortion Vec</summary>
         //[DefaultValue(4)]  // StencilUsage.DistortionVectors
-        public int StencilRefDistortionVec { get; set; }
+        public StencilUsage StencilRefDistortionVec { get; set; }
 
         /// <summary>Stencil Ref GBuffer</summary>
         //[DefaultValue(2)]  // StencilUsage.RequiresDeferredLighting
-        public int StencilRefGBuffer { get; set; }
+        public StencilUsage StencilRefGBuffer { get; set; }
 
         /// <summary>Stencil Ref MV</summary>
         //[DefaultValue(32)]  // StencilUsage.ObjectMotionVector
-        public int StencilRefMV { get; set; }
+        public StencilUsage StencilRefMV { get; set; }
 
         /// <summary>Stencil Write Mask</summary>
-        //[DefaultValue(3)]  // StencilUsage.RequiresDeferredLighting | StencilUsage.SubsurfaceScattering
-        public int StencilWriteMask { get; set; }
+        //[DefaultValue(6)]  // StencilUsage.RequiresDeferredLighting | StencilUsage.SubsurfaceScattering
+        public StencilUsage StencilWriteMask { get; set; }
 
         /// <summary>Stencil Write Mask Depth</summary>
         //[DefaultValue(8)]  // StencilUsage.TraceReflectionRay
-        public int StencilWriteMaskDepth { get; set; }
+        public StencilUsage StencilWriteMaskDepth { get; set; }
 
         /// <summary>Stencil Write Mask Distortion Vec</summary>
         //[DefaultValue(4)]  // StencilUsage.DistortionVectors
-        public int StencilWriteMaskDistortionVec { get; set; }
+        public StencilUsage StencilWriteMaskDistortionVec { get; set; }
 
         /// <summary>Stencil Write Mask GBuffer</summary>
         //[DefaultValue(3)]  // StencilUsage.RequiresDeferredLighting | StencilUsage.SubsurfaceScattering
-        public int StencilWriteMaskGBuffer { get; set; }
+        public StencilUsage StencilWriteMaskGBuffer { get; set; }
 
         /// <summary>Stencil Write Mask MV</summary>
         //[DefaultValue(32)]  // StencilUsage.ObjectMotionVector
-        public int StencilWriteMaskMV { get; set; }
+        public StencilUsage StencilWriteMaskMV { get; set; }
 
         /// <summary>ZTest GBuffer</summary>
         public int ZTestGBuffer { get; set; }  // @notice

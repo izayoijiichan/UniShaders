@@ -1,0 +1,16 @@
+﻿{
+    "name": "UniShader.URP.Particle.Utility",
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "autoReferenced": true,
+    "noEngineReferences": false,
+    "overrideReferences": false,
+    "references": [
+        "UniShader.Shared"
+    ],
+    "precompiledReferences": [],
+    "optionalUnityReferences": [],
+    "defineConstraints": [],
+    "versionDefines": []
+}

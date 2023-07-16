@@ -6,6 +6,7 @@ namespace UniHdrpShader
 {
     using System;
     using UnityEngine;
+    using UnityEngine.Rendering;
 
     /// <summary>
     /// HDRP/Lit Definition
@@ -261,23 +262,23 @@ namespace UniHdrpShader
 
         /// <summary>Distortion Blend Src</summary>
         //[DefaultValue(0)]
-        public int DistortionSrcBlend { get; set; }
+        public UnityEngine.Rendering.BlendMode DistortionSrcBlend { get; set; }
 
         /// <summary>Distortion Blend Dst</summary>
         //[DefaultValue(0)]
-        public int DistortionDstBlend { get; set; }
+        public UnityEngine.Rendering.BlendMode DistortionDstBlend { get; set; }
 
         /// <summary>Distortion Blur Blend Src</summary>
         //[DefaultValue(0)]
-        public int DistortionBlurSrcBlend { get; set; }
+        public UnityEngine.Rendering.BlendMode DistortionBlurSrcBlend { get; set; }
 
         /// <summary>Distortion Blur Blend Dst</summary>
         //[DefaultValue(0)]
-        public int DistortionBlurDstBlend { get; set; }
+        public UnityEngine.Rendering.BlendMode DistortionBlurDstBlend { get; set; }
 
-        /// <summary>Distortion Blur Blend Mode</summary>
+        /// <summary>Distortion Blur Blend Operator</summary>
         //[DefaultValue(0)]
-        public int DistortionBlurBlendMode { get; set; }
+        public BlendOp DistortionBlurBlendOp { get; set; }
 
         /// <summary>Distortion Scale</summary>
         //[DefaultValue(1.0f)]
@@ -347,7 +348,7 @@ namespace UniHdrpShader
         public int ZTestModeDistortion { get; set; }
 
         /// <summary>UV Set for base</summary>
-        //[DefaultValue(UVBase.UV0)]
+        //[DefaultValue(UVBaseMapping.UV0)]
         public UVBaseMapping UVBase { get; set; }
 
         /// <summary>Scale to apply on world coordinate</summary>
@@ -367,7 +368,7 @@ namespace UniHdrpShader
         public NormalMapSpace NormalMapSpace { get; set; }
 
         /// <summary>Material ID</summary>
-        //[DefaultValue(MaterialId.Standard)]
+        //[DefaultValue(MaterialId.LitStandard)]
         public MaterialId MaterialID { get; set; }
 
         /// <summary>Transmission Enable</summary>
@@ -428,7 +429,7 @@ namespace UniHdrpShader
         public Vector4 InvPrimScale { get; set; }
 
         /// <summary>UV Set for detail</summary>
-        //[DefaultValue(UV.UV0)]
+        //[DefaultValue(UVDetailMapping.UV0)]
         public UVDetailMapping UVDetail { get; set; }
 
         /// <summary>UVDetailsMappingMask</summary>
@@ -444,7 +445,7 @@ namespace UniHdrpShader
         public EmissiveColorMode EmissiveColorMode { get; set; }
 
         /// <summary>UV Set for emissive</summary>
-        //[DefaultValue(UV.UV0)]
+        //[DefaultValue(UVEmissiveMapping.UV0)]
         public UVEmissiveMapping UVEmissive { get; set; }
 
         /// <summary>Scale to apply on world coordinate</summary>
@@ -478,7 +479,7 @@ namespace UniHdrpShader
 
         /// <summary></summary>
         /// <remarks>Obsolete, kept for migration purpose</remarks>
-        [Obsolete]
+        [Obsolete("Obsolete")]
         public int DiffusionProfile { get; set; }
 
         /// <summary>Diffusion Profile Asset</summary>

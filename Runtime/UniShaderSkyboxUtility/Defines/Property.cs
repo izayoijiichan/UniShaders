@@ -20,22 +20,22 @@ namespace UniSkyboxShader
 
         #region 6 Sided
 
-        /// <summary>FrontTex</summary>
+        /// <summary>Front Texure</summary>
         public const string FrontTex = "_FrontTex";
 
-        /// <summary>BackTex</summary>
+        /// <summary>Back Texure</summary>
         public const string BackTex = "_BackTex";
 
-        /// <summary>LeftTex</summary>
+        /// <summary>Left Texure</summary>
         public const string LeftTex = "_LeftTex";
 
-        /// <summary>RightTex</summary>
+        /// <summary>Right Texure</summary>
         public const string RightTex = "_RightTex";
 
-        /// <summary>UpTex</summary>
+        /// <summary>Up Texure</summary>
         public const string UpTex = "_UpTex";
 
-        /// <summary>DownTex</summary>
+        /// <summary>Down Texure</summary>
         public const string DownTex = "_DownTex";
 
         #endregion
@@ -49,41 +49,41 @@ namespace UniSkyboxShader
 
         #region Panoramic
 
-        /// <summary>MainTex</summary>
+        /// <summary>Main Texure</summary>
         public const string MainTex = "_MainTex";
 
         /// <summary>Mapping</summary>
         public const string Mapping = "_Mapping";
 
-        /// <summary>ImageType</summary>
+        /// <summary>Image Type</summary>
         public const string ImageType = "_ImageType";
 
-        /// <summary>MirrorOnBack</summary>
+        /// <summary>Mirror on Back</summary>
         public const string MirrorOnBack = "_MirrorOnBack";
 
-        /// <summary>Layout</summary>
+        /// <summary>3D Layout</summary>
         public const string Layout = "_Layout";
 
         #endregion
 
         #region Procedural
 
-        /// <summary></summary>
+        /// <summary>Sun Disk</summary>
         public const string SunDisk = "_SunDisk";
 
-        /// <summary></summary>
+        /// <summary>Sun Size</summary>
         public const string SunSize = "_SunSize";
 
-        /// <summary></summary>
+        /// <summary>Sun Size Convergence</summary>
         public const string SunSizeConvergence = "_SunSizeConvergence";
 
-        /// <summary></summary>
+        /// <summary>Atmosphere Thickness</summary>
         public const string AtmosphereThickness = "_AtmosphereThickness";
 
-        /// <summary></summary>
+        /// <summary>Sky Tint Color</summary>
         public const string SkyTint = "_SkyTint";
 
-        /// <summary></summary>
+        /// <summary>Ground Color</summary>
         public const string GroundColor = "_GroundColor";
 
         #endregion

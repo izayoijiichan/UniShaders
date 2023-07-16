@@ -27,6 +27,9 @@ namespace UniHdrpShader
         /// <summary>Pixel Displacement</summary>
         public const string PixelDisplacement = "_PIXEL_DISPLACEMENT";
 
+        /// <summary>Tessellation Displacement</summary>
+        public const string TessellationDisplacement = "_TESSELLATION_DISPLACEMENT";
+
         /// <summary>Vertex Displacement Lock Object Scale</summary>
         public const string VertexDisplacementLockObjectScale = "_VERTEX_DISPLACEMENT_LOCK_OBJECT_SCALE";
 
@@ -155,5 +158,14 @@ namespace UniHdrpShader
 
         /// <summary>Metallic Gloss Map</summary>
         public const string MetallicGlossMap = "_METALLICGLOSSMAP";
+
+        /// <summary>Refraction Plane</summary>
+        public const string RefractionPlane = "_REFRACTION_PLANE";
+
+        /// <summary>Refraction Sphere</summary>
+        public const string RefractionSphere = "_REFRACTION_SPHERE";
+
+        /// <summary>Refraction Thin</summary>
+        public const string RefractionThin = "_REFRACTION_THIN";
     }
 }

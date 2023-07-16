@@ -18,12 +18,12 @@ namespace UniUrpShader
         #region Properties
 
         /// <summary>Smoothness Source</summary>
-        //[DefaultValue(0.0f)]
-        public float SmoothnessSource { get; set; }
+        //[DefaultValue(SmoothnessSource.SpecularAlpha)]
+        public SmoothnessSource SmoothnessSource { get; set; }
 
         /// <summary>Blend Mode Preserve Specular</summary>
         //[DefaultValue(1.0f)]
-        public float BlendModePreserveSpecular { get; set; }
+        public bool BlendModePreserveSpecular { get; set; }
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace UniUrpShader
         [Obsolete("Obsolete")]
         public float GlossinessSource { get; set; }
 
-        /// <summary>Spec Source</summary>
+        /// <summary>Specular Source</summary>
         //[DefaultValue(0.0f)]
         [Obsolete("Obsolete")]
         public float SpecSource { get; set; }

@@ -1,0 +1,14 @@
+﻿{
+    "name": "UniShader.Shared",
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "autoReferenced": true,
+    "noEngineReferences": false,
+    "overrideReferences": false,
+    "references": [],
+    "precompiledReferences": [],
+    "optionalUnityReferences": [],
+    "defineConstraints": [],
+    "versionDefines": []
+}

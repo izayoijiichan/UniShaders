@@ -48,7 +48,7 @@ namespace UniHdrpShader
         /// <summary>Minimal Pupil Aperture</summary>
         public float Vector1_2D21A623 { get; set; }
 
-        /// <summary>MaximalPupilAperture</summary>
+        /// <summary>Maximal Pupil Aperture</summary>
         public float Vector1_49C490F5 { get; set; }
 
         /// <summary>Sclera Smoothness</summary>
@@ -57,7 +57,7 @@ namespace UniHdrpShader
         /// <summary>Cornea Smoothness</summary>
         public float Vector1_8F0D1174 { get; set; }
 
-        /// <summary>IrisOffset</summary>
+        /// <summary>Iris Offset</summary>
         public float Vector1_76BF2124 { get; set; }
 
         /// <summary>Limbal Ring Size Iris</summary>

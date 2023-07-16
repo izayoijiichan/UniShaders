@@ -6,9 +6,6 @@ ___
 ## Shaders
 
 - Standard
-- HDRP/Eye
-- HDRP/Hair
-- HDRP/Lit
 - Particles/Standard Surface
 - Particles/Standard Unlit
 - Skybox/6 Sided
@@ -18,25 +15,34 @@ ___
 - Universal Render Pipeline/Lit
 - Universal Render Pipeline/Simple Lit
 - Universal Render Pipeline/Unlit
+- Universal Render Pipeline/Particles/Lit
+- Universal Render Pipeline/Particles/Unlit
+- HDRP/Eye
+- HDRP/Hair
+- HDRP/Lit
 
 ## Assembly
 
 - UniShader.HDRP.Utility.dll
+- UniShader.Shared.Utility.dll
 - UniShader.Standard.Utility.dll
 - UniShader.Standard.Particle.Utility.dll
 - UniShader.Skybox.Utility.dll
+- UniShader.URP.Particle.Utility.dll
 - UniShader.URP.Utility.dll
 
 ## Namespace
 
+- UniShader.Shared
 - UniHdrpShader
 - UniParticleShader
 - UniSkyboxShader
 - UniStandardShader
+- UniUrpParticleShader
 - UniUrpShader
 
 ___
-Last updated: 20 May, 2022  
+Last updated: 17 Jul, 2023
 Editor: Izayoi Jiichan
 
-*Copyright (C) 2020-2022 Izayoi Jiichan. All Rights Reserved.*
+*Copyright (C) 2020 Izayoi Jiichan. All Rights Reserved.*

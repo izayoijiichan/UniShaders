@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.5.0] - 2023-07-17
+- Features
+  - The `Universal Render Pipeline/Particles/Lit` and `Universal Render Pipeline/Particles/Unlit` shaders are now available in `UniUrpParticleShader`.
+- Changes
+  - An existing program was refactored.
+
 ## [1.4.0] - 2022-05-20
 - Features
   - The `Universal Render Pipeline/Simple Lit` and `Universal Render Pipeline/Unlit` shaders are now available in `UniShaderUrpUtility`.

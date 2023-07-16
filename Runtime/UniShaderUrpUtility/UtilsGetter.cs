@@ -44,81 +44,83 @@ namespace UniUrpShader
         /// <returns></returns>
         private static UrpLitDefinition GetUrpLitParametersFromMaterial(Material material)
         {
+            var materialProxy = new UrpLitMaterialProxy(material);
+
             return new UrpLitDefinition
             {
-                WorkflowMode = GetEnum<WorkflowMode>(material, Property.WorkflowMode, WorkflowMode.Metallic),
+                WorkflowMode = materialProxy.WorkflowMode,
 
                 // Blending state
-                Surface = GetEnum<SurfaceType>(material, Property.Surface, SurfaceType.Opaque),
-                Blend = GetEnum<BlendMode>(material, Property.Blend, BlendMode.Alpha),
-                Cull = GetEnum<CullMode>(material, Property.Cull, CullMode.Back),
+                Surface = materialProxy.Surface,
+                Blend = materialProxy.Blend,
+                Cull = materialProxy.Cull,
 
-                SrcBlend = GetFloat(material, Property.SrcBlend),
-                DstBlend = GetFloat(material, Property.DstBlend),
-                ZWrite = GetBool(material, Property.ZWrite),
+                SrcBlend = materialProxy.SrcBlend,
+                DstBlend = materialProxy.DstBlend,
+                ZWrite = materialProxy.ZWrite,
 
-                AlphaClip = GetBool(material, Property.AlphaClip),
-                Cutoff = GetFloat(material, Property.Cutoff),
+                AlphaClip = materialProxy.AlphaClip,
+                Cutoff = materialProxy.Cutoff,
 
-                ReceiveShadows = GetBool(material, Property.ReceiveShadows),
+                ReceiveShadows = materialProxy.ReceiveShadows,
 
                 // Base Map
-                BaseColor = GetColor(material, Property.BaseColor),
-                BaseMap = GetTexture(material, Property.BaseMap),
+                BaseColor = materialProxy.BaseColor,
+                BaseMap = materialProxy.BaseMap,
 
                 // Metallic Gloss Map
-                Metallic = GetFloat(material, Property.Metallic),
-                MetallicGlossMap = GetTexture(material, Property.MetallicGlossMap),
+                Metallic = materialProxy.Metallic,
+                MetallicGlossMap = materialProxy.MetallicGlossMap,
 
-                Smoothness = GetFloat(material, Property.Smoothness),
-                SmoothnessTextureChannel = GetEnum<SmoothnessTextureChannel>(material, Property.SmoothnessTextureChannel),
+                Smoothness = materialProxy.Smoothness,
+                SmoothnessTextureChannel = materialProxy.SmoothnessTextureChannel,
 
-                SpecColor = GetColor(material, Property.SpecColor),
-                SpecGlossMap = GetTexture(material, Property.SpecGlossMap),
+                SpecColor = materialProxy.SpecColor,
+                SpecGlossMap = materialProxy.SpecGlossMap,
 
-                SpecularHighlights = GetBool(material, Property.SpecularHighlights),
-                EnvironmentReflections = GetBool(material, Property.EnvironmentReflections),
+                SpecularHighlights = materialProxy.SpecularHighlights,
+                EnvironmentReflections = materialProxy.EnvironmentReflections,
 
                 // Bump Map (Normal Map)
-                BumpMap = GetTexture(material, Property.BumpMap),
-                BumpScale = GetFloat(material, Property.BumpScale),
+                BumpMap = materialProxy.BumpMap,
+                BumpScale = materialProxy.BumpScale,
 
                 // Parallax Map (Height Map)
-                Parallax = GetFloat(material, Property.Parallax),
-                ParallaxMap = GetTexture(material, Property.ParallaxMap),
+                Parallax = materialProxy.Parallax,
+                ParallaxMap =   materialProxy.ParallaxMap,
 
                 // Occlusion Map
-                OcclusionStrength = GetFloat(material, Property.OcclusionStrength),
-                OcclusionMap = GetTexture(material, Property.OcclusionMap),
+                OcclusionStrength = materialProxy.OcclusionStrength,
+                OcclusionMap = materialProxy.OcclusionMap,
 
                 // Emission Map
-                EmissionColor = GetColor(material, Property.EmissionColor),
-                EmissionMap = GetTexture(material, Property.EmissionMap),
+                EmissionColor = materialProxy.EmissionColor,
+                EmissionMap = materialProxy.EmissionMap,
 
                 // Detail Inputs
-                DetailMask = GetTexture(material, Property.DetailMask),
-                DetailAlbedoMapScale = GetFloat(material, Property.DetailAlbedoMapScale),
-                DetailAlbedoMap = GetTexture(material, Property.DetailAlbedoMap),
-                DetailNormalMapScale = GetFloat(material, Property.DetailNormalMapScale),
-                DetailNormalMap = GetTexture(material, Property.DetailNormalMap),
+                DetailMask = materialProxy.DetailMask,
+                DetailAlbedoMapScale = materialProxy.DetailAlbedoMapScale,
+                DetailAlbedoMap = materialProxy.DetailAlbedoMap,
+                DetailNormalMapScale = materialProxy.DetailNormalMapScale,
+                DetailNormalMap = materialProxy.DetailNormalMap,
 
                 // Advanced Options
-                ClearCoatMask = GetBool(material, Property.ClearCoatMask),
-                ClearCoatSmoothness = GetBool(material, Property.ClearCoatSmoothness),
+                ClearCoatMask = materialProxy.ClearCoatMask,
+                ClearCoatSmoothness = materialProxy.ClearCoatSmoothness,
 
-                QueueOffset = GetInt(material, Property.QueueOffset),
+                QueueOffset = materialProxy.QueueOffset,
 
                 // Obsolete Properties
-                //MainTex = GetTexture(material, Property.MainTex),
-                //Color = GetColor(material, Property.Color),
+                //MainTex = materialProxy.MainTex,
+                //Color = materialProxy.Color,
 
-                //GlossMapScale = GetFloat(material, Property.GlossMapScale),
-                //Glossiness = GetFloat(material, Property.Glossiness),
-                //GlossyReflections = GetFloat(material, Property.GlossyReflections),
+                //GlossMapScale = materialProxy.GlossMapScale,
+                //Glossiness = materialProxy.Glossiness,
+                //GlossyReflections = materialProxy.GlossyReflections,
 
-                //UnityLightmaps = GetTexture2DArray(material, Property.UnityLightmaps),
-                //UnityLightmapsInd = GetTexture2DArray(material, Property.UnityLightmapsInd),
-                //UnityShadowMasks = GetTexture2DArray(material, Property.UnityShadowMasks),
+                //UnityLightmaps = materialProxy.UnityLightmaps,
+                //UnityLightmapsInd = materialProxy.UnityLightmapsInd,
+                //UnityShadowMasks = materialProxy.UnityShadowMasks,
             };
         }
 
@@ -129,60 +131,62 @@ namespace UniUrpShader
         /// <returns></returns>
         private static UrpSimpleLitDefinition GetUrpSimpleLitParametersFromMaterial(Material material)
         {
+            var materialProxy = new UrpSimpleLitMaterialProxy(material);
+
             return new UrpSimpleLitDefinition
             {
                 // Blending state
-                Surface = GetEnum<SurfaceType>(material, Property.Surface, SurfaceType.Opaque),
-                Blend = GetEnum<BlendMode>(material, Property.Blend, BlendMode.Alpha),
-                Cull = GetEnum<CullMode>(material, Property.Cull, CullMode.Back),
+                Surface = materialProxy.Surface,
+                Blend = materialProxy.Blend,
+                Cull = materialProxy.Cull,
 
-                SrcBlend = GetFloat(material, Property.SrcBlend),
-                DstBlend = GetFloat(material, Property.DstBlend),
-                ZWrite = GetBool(material, Property.ZWrite),
+                SrcBlend = materialProxy.SrcBlend,
+                DstBlend = materialProxy.DstBlend,
+                ZWrite = materialProxy.ZWrite,
 
-                AlphaClip = GetBool(material, Property.AlphaClip),
-                Cutoff = GetFloat(material, Property.Cutoff),
+                AlphaClip = materialProxy.AlphaClip,
+                Cutoff = materialProxy.Cutoff,
 
-                BlendModePreserveSpecular = GetFloat(material, Property.BlendModePreserveSpecular),
+                BlendModePreserveSpecular = materialProxy.BlendModePreserveSpecular,
 
-                ReceiveShadows = GetBool(material, Property.ReceiveShadows),
+                ReceiveShadows = materialProxy.ReceiveShadows,
 
                 // Base Map
-                BaseColor = GetColor(material, Property.BaseColor),
-                BaseMap = GetTexture(material, Property.BaseMap),
+                BaseColor = materialProxy.BaseColor,
+                BaseMap = materialProxy.BaseMap,
 
                 // Specular Gloss Map
-                Smoothness = GetFloat(material, Property.Smoothness),
+                Smoothness = materialProxy.Smoothness,
 
-                SpecColor = GetColor(material, Property.SpecColor),
-                SpecGlossMap = GetTexture(material, Property.SpecGlossMap),
+                SpecColor = materialProxy.SpecColor,
+                SpecGlossMap = materialProxy.SpecGlossMap,
 
-                SmoothnessSource = GetFloat(material, Property.SmoothnessSource),
+                SmoothnessSource = materialProxy.SmoothnessSource,
 
-                SpecularHighlights = GetBool(material, Property.SpecularHighlights),
+                SpecularHighlights = materialProxy.SpecularHighlights,
 
                 // Bump Map (Normal Map)
-                BumpMap = GetTexture(material, Property.BumpMap),
-                BumpScale = GetFloat(material, Property.BumpScale),
+                BumpMap = materialProxy.BumpMap,
+                BumpScale = materialProxy.BumpScale,
 
                 // Emission Map
-                EmissionColor = GetColor(material, Property.EmissionColor),
-                EmissionMap = GetTexture(material, Property.EmissionMap),
+                EmissionColor = materialProxy.EmissionColor,
+                EmissionMap = materialProxy.EmissionMap,
 
                 // Editmode Properties
-                QueueOffset = GetInt(material, Property.QueueOffset),
+                QueueOffset = materialProxy.QueueOffset,
 
                 // Obsolete Properties
-                //MainTex = GetTexture(material, Property.MainTex),
-                //Color = GetColor(material, Property.Color),
+                //MainTex = materialProxy.MainTex,
+                //Color = materialProxy.Color,
 
-                //Shininess = GetFloat(material, Property.Shininess),
-                //GlossinessSource = GetFloat(material, Property.GlossinessSource),
-                //SpecSource = GetFloat(material, Property.SpecSource),
+                //Shininess = materialProxy.Shininess,
+                //GlossinessSource = materialProxy.GlossinessSource,
+                //SpecSource = materialProxy.SpecSource,
 
-                //UnityLightmaps = GetTexture2DArray(material, Property.UnityLightmaps),
-                //UnityLightmapsInd = GetTexture2DArray(material, Property.UnityLightmapsInd),
-                //UnityShadowMasks = GetTexture2DArray(material, Property.UnityShadowMasks),
+                //UnityLightmaps = materialProxy.UnityLightmaps,
+                //UnityLightmapsInd = materialProxy.UnityLightmapsInd,
+                //UnityShadowMasks = materialProxy.UnityShadowMasks,
             };
         }
 
@@ -193,169 +197,36 @@ namespace UniUrpShader
         /// <returns></returns>
         private static UrpUnlitDefinition GetUrpUnlitParametersFromMaterial(Material material)
         {
+            var materialProxy = new UrpUnlitMaterialProxy(material);
+
             return new UrpUnlitDefinition
             {
                 // Blending state
-                Surface = GetEnum<SurfaceType>(material, Property.Surface, SurfaceType.Opaque),
-                Blend = GetEnum<BlendMode>(material, Property.Blend, BlendMode.Alpha),
-                Cull = GetEnum<CullMode>(material, Property.Cull, CullMode.Back),
+                Surface = materialProxy.Surface,
+                Blend = materialProxy.Blend,
+                Cull = materialProxy.Cull,
 
-                SrcBlend = GetFloat(material, Property.SrcBlend),
-                DstBlend = GetFloat(material, Property.DstBlend),
-                ZWrite = GetBool(material, Property.ZWrite),
+                SrcBlend = materialProxy.SrcBlend,
+                DstBlend = materialProxy.DstBlend,
+                ZWrite = materialProxy.ZWrite,
 
-                AlphaClip = GetBool(material, Property.AlphaClip),
-                Cutoff = GetFloat(material, Property.Cutoff),
+                AlphaClip = materialProxy.AlphaClip,
+                Cutoff = materialProxy.Cutoff,
 
-                BlendOp = GetFloat(material, Property.BlendOp),
+                BlendOp = materialProxy.BlendOp,
 
                 // Base Map
-                BaseColor = GetColor(material, Property.BaseColor),
-                BaseMap = GetTexture(material, Property.BaseMap),
+                BaseColor = materialProxy.BaseColor,
+                BaseMap = materialProxy.BaseMap,
 
                 // Editmode Properties
-                QueueOffset = GetInt(material, Property.QueueOffset),
+                QueueOffset = materialProxy.QueueOffset,
 
                 // Obsolete Properties
-                //MainTex = GetTexture(material, Property.MainTex),
-                //Color = GetColor(material, Property.Color),
-                //SampleGI = GetFloat(material, Property.SampleGI),
+                //MainTex = materialProxy.MainTex,
+                //Color = materialProxy.Color,
+                //SampleGI = materialProxy.SampleGI,
             };
-        }
-
-        /// <summary>
-        /// Gets bool value.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private static bool GetBool(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return material.GetInt(propertyName) == 1;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Gets color value.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private static Color GetColor(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return material.GetColor(propertyName);
-            }
-            else
-            {
-                return default;
-            }
-        }
-
-        /// <summary>
-        /// Gets enum value.
-        /// </summary>
-        /// <typeparam name="TEnum"></typeparam>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="defaultValue"></param>
-        /// <returns></returns>
-        private static TEnum GetEnum<TEnum>(Material material, string propertyName, TEnum? defaultValue = null) where TEnum : struct
-        {
-            int propertyValue = GetInt(material, propertyName);
-
-            if (Enum.TryParse(propertyValue.ToString(), out TEnum result))
-            {
-                return result;
-            }
-            else if (defaultValue.HasValue)
-            {
-                return defaultValue.Value;
-            }
-            else
-            {
-                return default;
-            }
-        }
-
-        /// <summary>
-        /// Gets float value.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private static float GetFloat(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return material.GetFloat(propertyName);
-            }
-            else
-            {
-                return 0.0f;
-            }
-        }
-
-        /// <summary>
-        /// Gets int value.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private static int GetInt(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return material.GetInt(propertyName);
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
-        /// <summary>
-        /// Gets the Texture.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="defaultValue"></param>
-        /// <returns></returns>
-        private static Texture2D GetTexture(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return (Texture2D)material.GetTexture(propertyName);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Gets the Vector4.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private static Vector4 GetVector4(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return material.GetVector(propertyName);
-            }
-            else
-            {
-                return default;
-            }
         }
     }
 }

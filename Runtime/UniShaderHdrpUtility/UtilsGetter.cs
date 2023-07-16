@@ -44,89 +44,114 @@ namespace UniHdrpShader
         /// <returns></returns>
         private static HdrpEyeDefinition GetHdrpEyeParametersFromMaterial(Material material)
         {
+            var materialProxy = new HdrpEyeMaterialProxy(material);
+
             return new HdrpEyeDefinition
             {
                 // Surface Options
-                SurfaceType = GetEnum<SurfaceType>(material, Property.SurfaceType, SurfaceType.Opaque),
-                RenderQueueType = GetEnum<RenderQueueType>(material, Property.RenderQueueType, RenderQueueType.Default),
-                BlendMode = GetEnum<BlendMode>(material, Property.BlendMode, BlendMode.Alpha),
-                EnableBlendModePreserveSpecularLighting = GetBool(material, Property.EnableBlendModePreserveSpecularLighting),
-                CullMode = GetEnum<CullMode>(material, Property.CullMode, CullMode.Back),
-                CullModeForward = GetEnum<CullMode>(material, Property.DistortionBlendMode, CullMode.Back),
-                OpaqueCullMode = GetEnum<OpaqueCullMode>(material, Property.OpaqueCullMode, OpaqueCullMode.Back),
+                SurfaceType = materialProxy.SurfaceType,
+                BlendMode = materialProxy.BlendMode,
 
-                SrcBlend = GetFloat(material, Property.SrcBlend),
-                DstBlend = GetFloat(material, Property.DstBlend),
-                ZWrite = GetBool(material, Property.ZWrite),
+                RenderQueueType = materialProxy.RenderQueueType,
+
+                EnableBlendModePreserveSpecularLighting = materialProxy.EnableBlendModePreserveSpecularLighting,
+
+                CullMode = materialProxy.CullMode,
+                CullModeForward = materialProxy.CullModeForward,
+                OpaqueCullMode = materialProxy.OpaqueCullMode,
+
+                SrcBlend = materialProxy.SrcBlend,
+                DstBlend = materialProxy.DstBlend,
+                ZWrite = materialProxy.ZWrite,
 
                 // Transparent
-                TransparentCullMode = GetEnum<TransparentCullMode>(material, Property.TransparentCullMode, TransparentCullMode.Back),
-                EnableFogOnTransparent = GetBool(material, Property.EnableFogOnTransparent),
-                TransparentSortPriority = GetFloat(material, Property.TransparentSortPriority),
-                TransparentBackfaceEnable = GetBool(material, Property.TransparentBackfaceEnable),
-                TransparentDepthPrepassEnable = GetBool(material, Property.TransparentDepthPrepassEnable),
-                TransparentDepthPostpassEnable = GetBool(material, Property.TransparentDepthPostpassEnable),
-                TransparentWritingMotionVec = GetFloat(material, Property.TransparentWritingMotionVec),
-                TransparentZWrite = GetBool(material, Property.TransparentZWrite),
+                TransparentCullMode = materialProxy.TransparentCullMode,
+                EnableFogOnTransparent = materialProxy.EnableFogOnTransparent,
+                TransparentSortPriority = materialProxy.TransparentSortPriority,
+                TransparentBackfaceEnable = materialProxy.TransparentBackfaceEnable,
+                TransparentDepthPrepassEnable = materialProxy.TransparentDepthPrepassEnable,
+                TransparentDepthPostpassEnable = materialProxy.TransparentDepthPostpassEnable,
+                TransparentWritingMotionVec = materialProxy.TransparentWritingMotionVec,
+                TransparentZWrite = materialProxy.TransparentZWrite,
 
-                ZTestDepthEqualForOpaque = GetInt(material, Property.ZTestDepthEqualForOpaque),
-                ZTestTransparent = GetInt(material, Property.ZTestTransparent),
+                ZTestDepthEqualForOpaque = materialProxy.ZTestDepthEqualForOpaque,
+                ZTestTransparent = materialProxy.ZTestTransparent,
 
                 // Alpha Clipping
-                AlphaCutoffEnable = GetBool(material, Property.AlphaCutoffEnable),
-                UseShadowThreshold = GetBool(material, Property.UseShadowThreshold),
-                AlphaToMask = GetBool(material, Property.AlphaToMask),
-                AlphaToMaskInspectorValue = GetFloat(material, Property.AlphaToMaskInspectorValue),
+                AlphaCutoffEnable = materialProxy.AlphaCutoffEnable,
+                UseShadowThreshold = materialProxy.UseShadowThreshold,
+                AlphaToMask = materialProxy.AlphaToMask,
+                AlphaToMaskInspectorValue = materialProxy.AlphaToMaskInspectorValue,
 
-                AlphaSrcBlend = GetFloat(material, Property.AlphaSrcBlend),
-                AlphaDstBlend = GetFloat(material, Property.AlphaDstBlend),
+                AlphaSrcBlend = materialProxy.AlphaSrcBlend,
+                AlphaDstBlend = materialProxy.AlphaDstBlend,
 
                 // Double Sided
-                DoubleSidedEnable = GetBool(material, Property.DoubleSidedEnable),
-                DoubleSidedNormalMode = GetEnum<DoubleSidedNormalMode>(material, Property.DoubleSidedNormalMode, DoubleSidedNormalMode.Mirror),
-                DoubleSidedConstants = GetVector4(material, Property.DoubleSidedConstants),
+                DoubleSidedEnable = materialProxy.DoubleSidedEnable,
+                DoubleSidedNormalMode = materialProxy.DoubleSidedNormalMode,
+                DoubleSidedConstants = materialProxy.DoubleSidedConstants,
 
-                SupportDecals = GetBool(material, Property.SupportDecals),
-                ReceivesSSR = GetBool(material, Property.ReceivesSSR),
-                ReceivesSSRTransparent = GetBool(material, Property.ReceivesSSRTransparent),
+                SupportDecals = materialProxy.SupportDecals,
+                ReceivesSSR = materialProxy.ReceivesSSR,
+                ReceivesSSRTransparent = materialProxy.ReceivesSSRTransparent,
+
+                EmissiveColor = materialProxy.EmissiveColor,
+
+                DepthOffsetEnable = materialProxy.DepthOffsetEnable,
+
+                RequireSplitLighting = materialProxy.RequireSplitLighting,
+
+                // Stencil
+                StencilRef = materialProxy.StencilRef,
+                StencilRefDepth = materialProxy.StencilRefDepth,
+                StencilRefDistortionVec = materialProxy.StencilRefDistortionVec,
+                StencilRefGBuffer = materialProxy.StencilRefGBuffer,
+                StencilRefMV = materialProxy.StencilRefMV,
+                StencilWriteMask = materialProxy.StencilWriteMask,
+                StencilWriteMaskDepth = materialProxy.StencilWriteMaskDepth,
+                StencilWriteMaskDistortionVec = materialProxy.StencilWriteMaskDistortionVec,
+                StencilWriteMaskGBuffer = materialProxy.StencilWriteMaskGBuffer,
+                StencilWriteMaskMV = materialProxy.StencilWriteMaskMV,
+
+                ZTestGBuffer = materialProxy.ZTestGBuffer,
 
                 // Exposed Properties
 
                 // Sclera
-                Texture2D_5F873FC1 = GetTexture(material, Property.Texture2D_5F873FC1),
-                Texture2D_B9F5688C = GetTexture(material, Property.Texture2D_B9F5688C),
-                Vector1_70564D59 = GetFloat(material, Property.Vector1_70564D59),
+                Texture2D_5F873FC1 = materialProxy.Texture2D_5F873FC1,
+                Texture2D_B9F5688C = materialProxy.Texture2D_B9F5688C,
+                Vector1_70564D59 = materialProxy.Vector1_70564D59,
 
                 // Iris
-                Texture2D_D8BF6575 = GetTexture(material, Property.Texture2D_D8BF6575),
-                Texture2D_4DB28C10 = GetTexture(material, Property.Texture2D_4DB28C10),
-                Vector1_FC0895C8 = GetFloat(material, Property.Vector1_FC0895C8),
-                Color_83777D09 = GetColor(material, Property.Color_83777D09),
+                Texture2D_D8BF6575 = materialProxy.Texture2D_D8BF6575,
+                Texture2D_4DB28C10 = materialProxy.Texture2D_4DB28C10,
+                Vector1_FC0895C8 = materialProxy.Vector1_FC0895C8,
+                Color_83777D09 = materialProxy.Color_83777D09,
 
                 // Pupil
-                Vector1_DFF948F3 = GetFloat(material, Property.Vector1_DFF948F3),
-                Boolean_8D34052F = GetBool(material, Property.Boolean_8D34052F),
-                Vector1_FEA38ABB = GetFloat(material, Property.Vector1_FEA38ABB),
-                Vector1_2D21A623 = GetFloat(material, Property.Vector1_2D21A623),
-                Vector1_49C490F5 = GetFloat(material, Property.Vector1_49C490F5),
+                Vector1_DFF948F3 = materialProxy.Vector1_DFF948F3,
+                Boolean_8D34052F = materialProxy.Boolean_8D34052F,
+                Vector1_FEA38ABB = materialProxy.Vector1_FEA38ABB,
+                Vector1_2D21A623 = materialProxy.Vector1_2D21A623,
+                Vector1_49C490F5 = materialProxy.Vector1_49C490F5,
 
-                Vector1_F084AE9E = GetFloat(material, Property.Vector1_F084AE9E),
-                Vector1_8F0D1174 = GetFloat(material, Property.Vector1_8F0D1174),
-                Vector1_76BF2124 = GetFloat(material, Property.Vector1_76BF2124),
+                Vector1_F084AE9E = materialProxy.Vector1_F084AE9E,
+                Vector1_8F0D1174 = materialProxy.Vector1_8F0D1174,
+                Vector1_76BF2124 = materialProxy.Vector1_76BF2124,
 
                 // Limbal Ring
-                Vector1_C4ED1456 = GetFloat(material, Property.Vector1_C4ED1456),
-                Vector1_94E1614A = GetFloat(material, Property.Vector1_94E1614A),
-                Vector1_6C2C412D = GetFloat(material, Property.Vector1_6C2C412D),
-                Vector1_A6DA845F = GetFloat(material, Property.Vector1_A6DA845F),
+                Vector1_C4ED1456 = materialProxy.Vector1_C4ED1456,
+                Vector1_94E1614A = materialProxy.Vector1_94E1614A,
+                Vector1_6C2C412D = materialProxy.Vector1_6C2C412D,
+                Vector1_A6DA845F = materialProxy.Vector1_A6DA845F,
 
                 // Iris Diffusion Profile
-                DiffusionProfile_bfbe0deb8ec4428a9cfcdb968651903c = GetFloat(material, Property.DiffusionProfile_bfbe0deb8ec4428a9cfcdb968651903c),
-                DiffusionProfile_bfbe0deb8ec4428a9cfcdb968651903c_Asset = GetVector4(material, Property.DiffusionProfile_bfbe0deb8ec4428a9cfcdb968651903c_Asset),
+                DiffusionProfile_bfbe0deb8ec4428a9cfcdb968651903c = materialProxy.DiffusionProfile_bfbe0deb8ec4428a9cfcdb968651903c,
+                DiffusionProfile_bfbe0deb8ec4428a9cfcdb968651903c_Asset = materialProxy.DiffusionProfile_bfbe0deb8ec4428a9cfcdb968651903c_Asset,
 
                 // Sclera Diffusion Profile
-                DiffusionProfile_261f48f1fbc94ccbafc421414859c159 = GetFloat(material, Property.DiffusionProfile_261f48f1fbc94ccbafc421414859c159),
-                DiffusionProfile_261f48f1fbc94ccbafc421414859c159_Asset = GetVector4(material, Property.DiffusionProfile_261f48f1fbc94ccbafc421414859c159_Asset),
+                DiffusionProfile_261f48f1fbc94ccbafc421414859c159 = materialProxy.DiffusionProfile_261f48f1fbc94ccbafc421414859c159,
+                DiffusionProfile_261f48f1fbc94ccbafc421414859c159_Asset = materialProxy.DiffusionProfile_261f48f1fbc94ccbafc421414859c159_Asset,
             };
         }
 
@@ -137,92 +162,117 @@ namespace UniHdrpShader
         /// <returns></returns>
         private static HdrpHairDefinition GetHdrpHairParametersFromMaterial(Material material)
         {
+            var materialProxy = new HdrpHairMaterialProxy(material);
+
             return new HdrpHairDefinition
             {
                 // Surface Options
-                SurfaceType = GetEnum<SurfaceType>(material, Property.SurfaceType, SurfaceType.Opaque),
-                RenderQueueType = GetEnum<RenderQueueType>(material, Property.RenderQueueType, RenderQueueType.Default),
-                BlendMode = GetEnum<BlendMode>(material, Property.BlendMode, BlendMode.Alpha),
-                EnableBlendModePreserveSpecularLighting = GetBool(material, Property.EnableBlendModePreserveSpecularLighting),
-                CullMode = GetEnum<CullMode>(material, Property.CullMode, CullMode.Back),
-                CullModeForward = GetEnum<CullMode>(material, Property.DistortionBlendMode, CullMode.Back),
-                OpaqueCullMode = GetEnum<OpaqueCullMode>(material, Property.OpaqueCullMode, OpaqueCullMode.Back),
+                SurfaceType = materialProxy.SurfaceType,
+                BlendMode = materialProxy.BlendMode,
 
-                SrcBlend = GetFloat(material, Property.SrcBlend),
-                DstBlend = GetFloat(material, Property.DstBlend),
-                ZWrite = GetBool(material, Property.ZWrite),
+                RenderQueueType = materialProxy.RenderQueueType,
+
+                EnableBlendModePreserveSpecularLighting = materialProxy.EnableBlendModePreserveSpecularLighting,
+
+                CullMode = materialProxy.CullMode,
+                CullModeForward = materialProxy.CullModeForward,
+                OpaqueCullMode = materialProxy.OpaqueCullMode,
+
+                SrcBlend = materialProxy.SrcBlend,
+                DstBlend = materialProxy.DstBlend,
+                ZWrite = materialProxy.ZWrite,
 
                 // Transparent
-                TransparentCullMode = GetEnum<TransparentCullMode>(material, Property.TransparentCullMode, TransparentCullMode.Back),
-                EnableFogOnTransparent = GetBool(material, Property.EnableFogOnTransparent),
-                TransparentSortPriority = GetFloat(material, Property.TransparentSortPriority),
-                TransparentBackfaceEnable = GetBool(material, Property.TransparentBackfaceEnable),
-                TransparentDepthPrepassEnable = GetBool(material, Property.TransparentDepthPrepassEnable),
-                TransparentDepthPostpassEnable = GetBool(material, Property.TransparentDepthPostpassEnable),
-                TransparentWritingMotionVec = GetFloat(material, Property.TransparentWritingMotionVec),
-                TransparentZWrite = GetBool(material, Property.TransparentZWrite),
+                TransparentCullMode = materialProxy.TransparentCullMode,
+                EnableFogOnTransparent = materialProxy.EnableFogOnTransparent,
+                TransparentSortPriority = materialProxy.TransparentSortPriority,
+                TransparentBackfaceEnable = materialProxy.TransparentBackfaceEnable,
+                TransparentDepthPrepassEnable = materialProxy.TransparentDepthPrepassEnable,
+                TransparentDepthPostpassEnable = materialProxy.TransparentDepthPostpassEnable,
+                TransparentWritingMotionVec = materialProxy.TransparentWritingMotionVec,
+                TransparentZWrite = materialProxy.TransparentZWrite,
 
-                ZTestDepthEqualForOpaque = GetInt(material, Property.ZTestDepthEqualForOpaque),
-                ZTestTransparent = GetInt(material, Property.ZTestTransparent),
+                ZTestDepthEqualForOpaque = materialProxy.ZTestDepthEqualForOpaque,
+                ZTestTransparent = materialProxy.ZTestTransparent,
 
                 // Alpha Clipping
-                AlphaCutoffEnable = GetBool(material, Property.AlphaCutoffEnable),
-                UseShadowThreshold = GetBool(material, Property.UseShadowThreshold),
-                AlphaToMask = GetBool(material, Property.AlphaToMask),
-                AlphaToMaskInspectorValue = GetFloat(material, Property.AlphaToMaskInspectorValue),
+                AlphaCutoffEnable = materialProxy.AlphaCutoffEnable,
+                UseShadowThreshold = materialProxy.UseShadowThreshold,
+                AlphaToMask = materialProxy.AlphaToMask,
+                AlphaToMaskInspectorValue = materialProxy.AlphaToMaskInspectorValue,
 
-                AlphaSrcBlend = GetFloat(material, Property.AlphaSrcBlend),
-                AlphaDstBlend = GetFloat(material, Property.AlphaDstBlend),
+                AlphaSrcBlend = materialProxy.AlphaSrcBlend,
+                AlphaDstBlend = materialProxy.AlphaDstBlend,
 
                 // Double Sided
-                DoubleSidedEnable = GetBool(material, Property.DoubleSidedEnable),
-                DoubleSidedNormalMode = GetEnum<DoubleSidedNormalMode>(material, Property.DoubleSidedNormalMode, DoubleSidedNormalMode.Mirror),
-                DoubleSidedConstants = GetVector4(material, Property.DoubleSidedConstants),
+                DoubleSidedEnable = materialProxy.DoubleSidedEnable,
+                DoubleSidedNormalMode = materialProxy.DoubleSidedNormalMode,
+                DoubleSidedConstants = materialProxy.DoubleSidedConstants,
 
-                SupportDecals = GetBool(material, Property.SupportDecals),
-                ReceivesSSR = GetBool(material, Property.ReceivesSSR),
-                ReceivesSSRTransparent = GetBool(material, Property.ReceivesSSRTransparent),
+                SupportDecals = materialProxy.SupportDecals,
+                ReceivesSSR = materialProxy.ReceivesSSR,
+                ReceivesSSRTransparent = materialProxy.ReceivesSSRTransparent,
+
+                EmissiveColor = materialProxy.EmissiveColor,
+
+                DepthOffsetEnable = materialProxy.DepthOffsetEnable,
+
+                RequireSplitLighting = materialProxy.RequireSplitLighting,
+
+                // Stencil
+                StencilRef = materialProxy.StencilRef,
+                StencilRefDepth = materialProxy.StencilRefDepth,
+                StencilRefDistortionVec = materialProxy.StencilRefDistortionVec,
+                StencilRefGBuffer = materialProxy.StencilRefGBuffer,
+                StencilRefMV = materialProxy.StencilRefMV,
+                StencilWriteMask = materialProxy.StencilWriteMask,
+                StencilWriteMaskDepth = materialProxy.StencilWriteMaskDepth,
+                StencilWriteMaskDistortionVec = materialProxy.StencilWriteMaskDistortionVec,
+                StencilWriteMaskGBuffer = materialProxy.StencilWriteMaskGBuffer,
+                StencilWriteMaskMV = materialProxy.StencilWriteMaskMV,
+
+                ZTestGBuffer = materialProxy.ZTestGBuffer,
 
                 // Exposed Properties
 
                 // Base
-                BaseColor = GetColor(material, Property.BaseColor),
-                BaseColorMap = GetTexture(material, Property.BaseColorMap),
+                BaseColor = materialProxy.BaseColor,
+                BaseColorMap = materialProxy.BaseColorMap,
 
                 // Alpha
-                Alpha = GetBool(material, Property.Alpha),
-                AlphaClipThreshold = GetFloat(material, Property.AlphaClipThreshold),
-                AlphaClipThresholdDepthPrepass = GetFloat(material, Property.AlphaClipThresholdDepthPrepass),
-                AlphaClipThresholdDepthPostpass = GetFloat(material, Property.AlphaClipThresholdDepthPostpass),
-                AlphaThresholdShadow = GetFloat(material, Property.AlphaThresholdShadow),
+                Alpha = materialProxy.Alpha,
+                AlphaClipThreshold = materialProxy.AlphaClipThreshold,
+                AlphaClipThresholdDepthPrepass = materialProxy.AlphaClipThresholdDepthPrepass,
+                AlphaClipThresholdDepthPostpass = materialProxy.AlphaClipThresholdDepthPostpass,
+                AlphaThresholdShadow = materialProxy.AlphaThresholdShadow,
 
                 // Base UV
-                UVBaseST = GetVector4(material, Property.UVBaseST),
+                UVBaseST = materialProxy.UVBaseST,
 
                 // Normal
-                NormalMap = GetTexture(material, Property.NormalMap),
-                NormalScale = GetFloat(material, Property.NormalScale),
+                NormalMap = materialProxy.NormalMap,
+                NormalScale = materialProxy.NormalScale,
 
                 // Ambient Occulusion
-                MaskMap = GetTexture(material, Property.MaskMap),
-                LightmapUV = GetBool(material, Property.LightmapUV),
+                MaskMap = materialProxy.MaskMap,
+                LightmapUV = materialProxy.LightmapUV,
 
                 // Smoothness
-                SmoothnessMask = GetTexture(material, Property.SmoothnessMask),
-                UVSmoothnessST = GetVector4(material, Property.UVSmoothnessST),
-                SmoothnessMin = GetFloat(material, Property.SmoothnessMin),
-                SmoothnessMax = GetFloat(material, Property.SmoothnessMax),
+                SmoothnessMask = materialProxy.SmoothnessMask,
+                UVSmoothnessST = materialProxy.UVSmoothnessST,
+                SmoothnessMin = materialProxy.SmoothnessMin,
+                SmoothnessMax = materialProxy.SmoothnessMax,
 
                 // Specular
-                SpecularColor = GetColor(material, Property.SpecularColor),
-                Specular = GetFloat(material, Property.Specular),
-                SpecularShift = GetFloat(material, Property.SpecularShift),
-                SecondarySpecular = GetFloat(material, Property.SecondarySpecular),
-                SecondarySpecularShift = GetFloat(material, Property.SecondarySpecularShift),
+                SpecularColor = materialProxy.SpecularColor,
+                Specular = materialProxy.Specular,
+                SpecularShift = materialProxy.SpecularShift,
+                SecondarySpecular = materialProxy.SecondarySpecular,
+                SecondarySpecularShift = materialProxy.SecondarySpecularShift,
 
                 // Transmission
-                TransmissionColor = GetColor(material, Property.TransmissionColor),
-                TransmissionRim = GetFloat(material, Property.TransmissionRim),
+                TransmissionColor = materialProxy.TransmissionColor,
+                TransmissionRim = materialProxy.TransmissionRim,
             };
         }
 
@@ -233,375 +283,263 @@ namespace UniHdrpShader
         /// <returns></returns>
         private static HdrpLitDefinition GetHdrpLitParametersFromMaterial(Material material)
         {
+            var materialProxy = new HdrpLitMaterialProxy(material);
+
             return new HdrpLitDefinition
             {
+                // Blending state
+
+                // Surface Options
+                SurfaceType = materialProxy.SurfaceType,
+                BlendMode = materialProxy.BlendMode,
+                RenderQueueType = materialProxy.RenderQueueType,
+
+                SrcBlend = materialProxy.SrcBlend,
+                DstBlend = materialProxy.DstBlend,
+                AlphaSrcBlend = materialProxy.AlphaSrcBlend,
+                AlphaDstBlend = materialProxy.AlphaDstBlend,
+
+                AlphaToMask = materialProxy.AlphaToMask,
+                AlphaToMaskInspectorValue = materialProxy.AlphaToMaskInspectorValue,
+
+                ZWrite = materialProxy.ZWrite,
+                TransparentZWrite = materialProxy.TransparentZWrite,
+
+                CullMode = materialProxy.CullMode,
+                CullModeForward = materialProxy.CullModeForward,
+                TransparentCullMode = materialProxy.TransparentCullMode,
+                OpaqueCullMode = materialProxy.OpaqueCullMode,
+
+                ZTestDepthEqualForOpaque = materialProxy.ZTestDepthEqualForOpaque,
+                ZTestModeDistortion = materialProxy.ZTestModeDistortion,
+                ZTestTransparent = materialProxy.ZTestTransparent,
+
+                EnableFogOnTransparent = materialProxy.EnableFogOnTransparent,
+                EnableBlendModePreserveSpecularLighting = materialProxy.EnableBlendModePreserveSpecularLighting,
+
+                // Double Sided
+                DoubleSidedEnable = materialProxy.DoubleSidedEnable,
+                DoubleSidedNormalMode = materialProxy.DoubleSidedNormalMode,
+                DoubleSidedConstants = materialProxy.DoubleSidedConstants,
+
+                MainTex = materialProxy.MainTex,
+                Color = materialProxy.Color,
+                Cutoff = materialProxy.Cutoff,
+
                 // Base Map
-                BaseColor = GetColor(material, Property.Color),
-                BaseColorMap = GetTexture(material, Property.BaseColorMap),
-                BaseColorMapMipInfo = GetVector4(material, Property.BaseColorMapMipInfo),
+                BaseColor = materialProxy.BaseColor,
+                BaseColorMap = materialProxy.BaseColorMap,
+                BaseColorMapMipInfo = materialProxy.BaseColorMapMipInfo,
 
                 // Metallic Gloss Map
-                Metallic = GetFloat(material, Property.Metallic),
-                Smoothness = GetFloat(material, Property.Smoothness),
-                MaskMap = GetTexture(material, Property.MaskMap),
-                MetallicRemapMin = GetFloat(material, Property.MetallicRemapMin),
-                MetallicRemapMax = GetFloat(material, Property.MetallicRemapMax),
-                SmoothnessRemapMin = GetFloat(material, Property.SmoothnessRemapMin),
-                SmoothnessRemapMax = GetFloat(material, Property.SmoothnessRemapMax),
-                AORemapMin = GetFloat(material, Property.AORemapMin),
-                AORemapMax = GetFloat(material, Property.AORemapMax),
+                Metallic = materialProxy.Metallic,
+                Smoothness = materialProxy.Smoothness,
+                MetallicRemapMin = materialProxy.MetallicRemapMin,
+                MetallicRemapMax = materialProxy.MetallicRemapMax,
+                SmoothnessRemapMin = materialProxy.SmoothnessRemapMin,
+                SmoothnessRemapMax = materialProxy.SmoothnessRemapMax,
+
+                // Ambient Occulusion
+                MaskMap = materialProxy.MaskMap,
+                AORemapMin = materialProxy.AORemapMin,
+                AORemapMax = materialProxy.AORemapMax,
 
                 // Normal Map
-                NormalMap = GetTexture(material, Property.NormalMap),
-                NormalMapOS = GetTexture(material, Property.NormalMapOS),
-                NormalScale = GetFloat(material, Property.NormalScale),
+                NormalMap = materialProxy.NormalMap,
+                NormalMapOS = materialProxy.NormalMapOS,
+                NormalScale = materialProxy.NormalScale,
 
                 // Bent Normal Map
-                BentNormalMap = GetTexture(material, Property.BentNormalMap),
-                BentNormalMapOS = GetTexture(material, Property.BentNormalMapOS),
+                BentNormalMap = materialProxy.BentNormalMap,
+                BentNormalMapOS = materialProxy.BentNormalMapOS,
 
                 // Height Map
-                HeightMap = GetTexture(material, Property.HeightMap),
-                HeightAmplitude = GetFloat(material, Property.HeightAmplitude),
-                HeightCenter = GetFloat(material, Property.HeightCenter),
+                HeightMap = materialProxy.HeightMap,
+                HeightAmplitude = materialProxy.HeightAmplitude,
+                HeightCenter = materialProxy.HeightCenter,
 
-                HeightMapParametrization = GetEnum<HeightmapParametrization>(material, Property.HeightMapParametrization, HeightmapParametrization.MinMax),
+                HeightMapParametrization = materialProxy.HeightMapParametrization,
 
-                HeightOffset = GetFloat(material, Property.HeightOffset),
-                HeightMin = GetFloat(material, Property.HeightMin),
-                HeightMax = GetFloat(material, Property.HeightMax),
-                HeightTessAmplitude = GetFloat(material, Property.HeightTessAmplitude),
-                HeightTessCenter = GetFloat(material, Property.HeightTessCenter),
+                HeightOffset = materialProxy.HeightOffset,
+                HeightMin = materialProxy.HeightMin,
+                HeightMax = materialProxy.HeightMax,
+                HeightTessAmplitude = materialProxy.HeightTessAmplitude,
+                HeightTessCenter = materialProxy.HeightTessCenter,
 
-                HeightPoMAmplitude = GetFloat(material, Property.HeightPoMAmplitude),
+                HeightPoMAmplitude = materialProxy.HeightPoMAmplitude,
 
                 // Detail Map
-                DetailMap = GetTexture(material, Property.DetailMap),
-                DetailAlbedoScale = GetFloat(material, Property.DetailAlbedoScale),
-                DetailNormalScale = GetFloat(material, Property.DetailNormalScale),
-                DetailSmoothnessScale = GetFloat(material, Property.DetailSmoothnessScale),
+                DetailMap = materialProxy.DetailMap,
+                DetailAlbedoScale = materialProxy.DetailAlbedoScale,
+                DetailNormalScale = materialProxy.DetailNormalScale,
+                DetailSmoothnessScale = materialProxy.DetailSmoothnessScale,
 
                 // Tangent Map
-                TangentMap = GetTexture(material, Property.TangentMap),
-                TangentMapOS = GetTexture(material, Property.TangentMapOS),
+                TangentMap = materialProxy.TangentMap,
+                TangentMapOS = materialProxy.TangentMapOS,
 
                 // Anisotropy Map
-                Anisotropy = GetFloat(material, Property.Anisotropy),
-                AnisotropyMap = GetTexture(material, Property.AnisotropyMap),
+                Anisotropy = materialProxy.Anisotropy,
+                AnisotropyMap = materialProxy.AnisotropyMap,
 
                 // Subsurface Mask Map
-                SubsurfaceMask = GetFloat(material, Property.SubsurfaceMask),
-                SubsurfaceMaskMap = GetTexture(material, Property.SubsurfaceMaskMap),
+                SubsurfaceMask = materialProxy.SubsurfaceMask,
+                SubsurfaceMaskMap = materialProxy.SubsurfaceMaskMap,
 
                 // Thickness Map
-                Thickness = GetFloat(material, Property.Thickness),
-                ThicknessMap = GetTexture(material, Property.ThicknessMap),
-                ThicknessRemap = GetVector4(material, Property.ThicknessRemap),
+                Thickness = materialProxy.Thickness,
+                ThicknessMap = materialProxy.ThicknessMap,
+                ThicknessRemap = materialProxy.ThicknessRemap,
 
                 // Iridescence Thickness Map
-                IridescenceThickness = GetFloat(material, Property.IridescenceThickness),
-                IridescenceThicknessMap = GetTexture(material, Property.IridescenceThicknessMap),
-                IridescenceThicknessRemap = GetVector4(material, Property.IridescenceThicknessRemap),
+                IridescenceThickness = materialProxy.IridescenceThickness,
+                IridescenceThicknessMap = materialProxy.IridescenceThicknessMap,
+                IridescenceThicknessRemap = materialProxy.IridescenceThicknessRemap,
 
                 // Iridescence Mask Map
-                IridescenceMask = GetFloat(material, Property.IridescenceMask),
-                IridescenceMaskMap = GetTexture(material, Property.IridescenceMaskMap),
+                IridescenceMask = materialProxy.IridescenceMask,
+                IridescenceMaskMap = materialProxy.IridescenceMaskMap,
 
                 // Coat Mask Map
-                CoatMask = GetFloat(material, Property.CoatMask),
-                CoatMaskMap = GetTexture(material, Property.CoatMaskMap),
+                CoatMask = materialProxy.CoatMask,
+                CoatMaskMap = materialProxy.CoatMaskMap,
 
                 // Specular Color Map
-                EnergyConservingSpecularColor = GetFloat(material, Property.CoatMask),
-                SpecularColor = GetColor(material, Property.SpecularColor),
-                SpecularColorMap = GetTexture(material, Property.SpecularColorMap),
-                SpecularOcclusionMode = GetEnum<SpecularOcclusionMode>(material, Property.SpecularOcclusionMode, SpecularOcclusionMode.FromAmbientOcclusion),
+                EnergyConservingSpecularColor = materialProxy.EnergyConservingSpecularColor,
+                SpecularColor = materialProxy.SpecularColor,
+                SpecularColorMap = materialProxy.SpecularColorMap,
+                SpecularOcclusionMode = materialProxy.SpecularOcclusionMode,
+
+                // Specular AA
+                EnableGeometricSpecularAA = materialProxy.EnableGeometricSpecularAA,
+                SpecularAAScreenSpaceVariance = materialProxy.SpecularAAScreenSpaceVariance,
+                SpecularAAThreshold = materialProxy.SpecularAAThreshold,
+
+                PPDMinSamples = materialProxy.PPDMinSamples,
+                PPDMaxSamples = materialProxy.PPDMaxSamples,
+                PPDLodThreshold = materialProxy.PPDLodThreshold,
+                PPDPrimitiveLength = materialProxy.PPDPrimitiveLength,
+                PPDPrimitiveWidth = materialProxy.PPDPrimitiveWidth,
+                InvPrimScale = materialProxy.InvPrimScale,
+
+                UVDetail = materialProxy.UVDetail,
+                UVDetailsMappingMask = materialProxy.UVDetailsMappingMask,
+                LinkDetailsWithBase = materialProxy.LinkDetailsWithBase,
 
                 // Emissive Color Map
-                EmissiveColor = GetColor(material, Property.EmissiveColor),
-                EmissiveColorLDR = GetColor(material, Property.EmissiveColorLDR),
-                EmissiveColorMap = GetTexture(material, Property.EmissiveColorMap),
 
-                AlbedoAffectEmissive = GetFloat(material, Property.AlbedoAffectEmissive),
-                EmissiveIntensityUnit = GetInt(material, Property.EmissiveIntensityUnit),
-                UseEmissiveIntensity = GetBool(material, Property.UseEmissiveIntensity),
-                EmissiveIntensity = GetFloat(material, Property.EmissiveIntensity),
-                EmissiveExposureWeight = GetFloat(material, Property.EmissiveExposureWeight),
+                EmissiveColorMode = materialProxy.EmissiveColorMode,
+                EmissiveColor = materialProxy.EmissiveColor,
+                EmissionColor = materialProxy.EmissionColor,
+                EmissiveColorLDR = materialProxy.EmissiveColorLDR,
+                EmissiveColorMap = materialProxy.EmissiveColorMap,
+
+                UVEmissive = materialProxy.UVEmissive,
+                TexWorldScaleEmissive = materialProxy.TexWorldScaleEmissive,
+                UVMappingMaskEmissive = materialProxy.UVMappingMaskEmissive,
+
+                AlbedoAffectEmissive = materialProxy.AlbedoAffectEmissive,
+                EmissiveIntensityUnit = materialProxy.EmissiveIntensityUnit,
+                UseEmissiveIntensity = materialProxy.UseEmissiveIntensity,
+                EmissiveIntensity = materialProxy.EmissiveIntensity,
+                EmissiveExposureWeight = materialProxy.EmissiveExposureWeight,
 
                 // Distortion Vector Map
-                DistortionVectorMap = GetTexture(material, Property.DistortionVectorMap),
-                DistortionEnable = GetBool(material, Property.DistortionEnable),
-                DistortionDepthTest = GetBool(material, Property.DistortionDepthTest),
-                DistortionBlendMode = GetEnum<DistortionBlendMode>(material, Property.DistortionBlendMode, DistortionBlendMode.Add),
-                DistortionSrcBlend = GetInt(material, Property.DistortionSrcBlend),
-                DistortionDstBlend = GetInt(material, Property.DistortionDstBlend),
-                DistortionBlurSrcBlend = GetInt(material, Property.DistortionBlurSrcBlend),
-                DistortionBlurDstBlend = GetInt(material, Property.DistortionBlurDstBlend),
-                DistortionBlurBlendMode = GetInt(material, Property.DistortionBlurBlendMode),
-                DistortionScale = GetFloat(material, Property.DistortionScale),
-                DistortionVectorScale = GetFloat(material, Property.DistortionVectorScale),
-                DistortionVectorBias = GetFloat(material, Property.DistortionVectorBias),
-                DistortionBlurScale = GetFloat(material, Property.DistortionBlurScale),
-                DistortionBlurRemapMin = GetFloat(material, Property.DistortionBlurRemapMin),
-                DistortionBlurRemapMax = GetFloat(material, Property.DistortionBlurRemapMax),
+                DistortionVectorMap = materialProxy.DistortionVectorMap,
+                DistortionEnable = materialProxy.DistortionEnable,
+                DistortionDepthTest = materialProxy.DistortionDepthTest,
+                DistortionBlendMode = materialProxy.DistortionBlendMode,
+                DistortionSrcBlend = materialProxy.DistortionSrcBlend,
+                DistortionDstBlend = materialProxy.DistortionDstBlend,
+                DistortionBlurSrcBlend = materialProxy.DistortionBlurSrcBlend,
+                DistortionBlurDstBlend = materialProxy.DistortionBlurDstBlend,
+                DistortionBlurBlendOp = materialProxy.DistortionBlurBlendOp,
+                DistortionScale = materialProxy.DistortionScale,
+                DistortionVectorScale = materialProxy.DistortionVectorScale,
+                DistortionVectorBias = materialProxy.DistortionVectorBias,
+                DistortionBlurScale = materialProxy.DistortionBlurScale,
+                DistortionBlurRemapMin = materialProxy.DistortionBlurRemapMin,
+                DistortionBlurRemapMax = materialProxy.DistortionBlurRemapMax,
 
-                AlphaCutoffEnable = GetBool(material, Property.AlphaCutoffEnable),
-                AlphaCutoff = GetFloat(material, Property.AlphaCutoff),
-                UseShadowThreshold = GetBool(material, Property.UseShadowThreshold),
-                AlphaCutoffShadow = GetFloat(material, Property.AlphaCutoffShadow),
-                AlphaCutoffPrepass = GetFloat(material, Property.AlphaCutoffPrepass),
-                AlphaCutoffPostpass = GetFloat(material, Property.AlphaCutoffPostpass),
+                UseShadowThreshold = materialProxy.UseShadowThreshold,
 
-                TransparentBackfaceEnable = GetBool(material, Property.TransparentBackfaceEnable),
-                TransparentDepthPrepassEnable = GetBool(material, Property.TransparentDepthPrepassEnable),
-                TransparentDepthPostpassEnable = GetBool(material, Property.TransparentDepthPostpassEnable),
-                TransparentSortPriority = GetFloat(material, Property.TransparentSortPriority),
+                // Alpha Clipping
+                AlphaCutoffEnable = materialProxy.AlphaCutoffEnable,
+                AlphaCutoff = materialProxy.AlphaCutoff,
+                AlphaCutoffShadow = materialProxy.AlphaCutoffShadow,
+                AlphaCutoffPrepass = materialProxy.AlphaCutoffPrepass,
+                AlphaCutoffPostpass = materialProxy.AlphaCutoffPostpass,
+
+                // Transparent
+                TransparentSortPriority = materialProxy.TransparentSortPriority,
+                TransparentBackfaceEnable = materialProxy.TransparentBackfaceEnable,
+                TransparentDepthPrepassEnable = materialProxy.TransparentDepthPrepassEnable,
+                TransparentDepthPostpassEnable = materialProxy.TransparentDepthPostpassEnable,
+                TransparentWritingMotionVec = materialProxy.TransparentWritingMotionVec,
 
                 // Transparency
-                RefractionModel = GetEnum<RefractionModel>(material, Property.RefractionModel, RefractionModel.None),
-                Ior = GetFloat(material, Property.Ior),
-                TransmittanceColor = GetColor(material, Property.TransmittanceColor),
-                TransmittanceColorMap = GetTexture(material, Property.TransmittanceColorMap),
-                ATDistance = GetFloat(material, Property.ATDistance),
-                TransparentWritingMotionVec = GetFloat(material, Property.TransparentWritingMotionVec),
+                RefractionModel = materialProxy.RefractionModel,
+                Ior = materialProxy.Ior,
+                TransmittanceColor = materialProxy.TransmittanceColor,
+                TransmittanceColorMap = materialProxy.TransmittanceColorMap,
+                ATDistance = materialProxy.ATDistance,
+
+                UVBase = materialProxy.UVBase,
+                TexWorldScale = materialProxy.TexWorldScale,
+                InvTilingScale = materialProxy.InvTilingScale,
+                UVMappingMask = materialProxy.UVMappingMask,
+                NormalMapSpace = materialProxy.NormalMapSpace,
+
+                MaterialID = materialProxy.MaterialID,
+                TransmissionEnable = materialProxy.TransmissionEnable,
+
+                DisplacementMode = materialProxy.DisplacementMode,
+                DisplacementLockObjectScale = materialProxy.DisplacementLockObjectScale,
+                DisplacementLockTilingScale = materialProxy.DisplacementLockTilingScale,
+
+                DepthOffsetEnable = materialProxy.DepthOffsetEnable,
+
+                RequireSplitLighting = materialProxy.RequireSplitLighting,
 
                 // Stencil state
 
                 // Forward
-                StencilRef = GetInt(material, Property.StencilRef),
-                StencilWriteMask = GetInt(material, Property.StencilWriteMask),
+                StencilRef = materialProxy.StencilRef,
+                StencilWriteMask = materialProxy.StencilWriteMask,
+
                 // GBuffer
-                StencilRefGBuffer = GetInt(material, Property.StencilRefGBuffer),
-                StencilWriteMaskGBuffer = GetInt(material, Property.StencilWriteMaskGBuffer),
+                StencilRefGBuffer = materialProxy.StencilRefGBuffer,
+                StencilWriteMaskGBuffer = materialProxy.StencilWriteMaskGBuffer,
+
                 // Depth prepass
-                StencilRefDepth = GetInt(material, Property.StencilRefDepth),
-                StencilWriteMaskDepth = GetInt(material, Property.StencilWriteMaskDepth),
+                StencilRefDepth = materialProxy.StencilRefDepth,
+                StencilWriteMaskDepth = materialProxy.StencilWriteMaskDepth,
+
                 // Motion vector pass
-                StencilRefMV = GetInt(material, Property.StencilRefMV),
-                StencilWriteMaskMV = GetInt(material, Property.StencilWriteMaskMV),
+                StencilRefMV = materialProxy.StencilRefMV,
+                StencilWriteMaskMV = materialProxy.StencilWriteMaskMV,
+
                 // Distortion vector pass
-                StencilRefDistortionVec = GetInt(material, Property.StencilRefDistortionVec),
-                StencilWriteMaskDistortionVec = GetInt(material, Property.StencilWriteMaskDistortionVec),
+                StencilRefDistortionVec = materialProxy.StencilRefDistortionVec,
+                StencilWriteMaskDistortionVec = materialProxy.StencilWriteMaskDistortionVec,
 
-                // Blending state
-                SurfaceType = GetEnum<SurfaceType>(material, Property.SurfaceType, SurfaceType.Opaque),
-                RenderQueueType = GetEnum<RenderQueueType>(material, Property.RenderQueueType, RenderQueueType.Default),  // @notice
-                BlendMode = GetEnum<BlendMode>(material, Property.BlendMode, BlendMode.Alpha),
-                SrcBlend = GetFloat(material, Property.SrcBlend),
-                DstBlend = GetFloat(material, Property.DstBlend),
-                AlphaSrcBlend = GetFloat(material, Property.AlphaSrcBlend),
-                AlphaDstBlend = GetFloat(material, Property.AlphaDstBlend),
-                AlphaToMaskInspectorValue = GetFloat(material, Property.AlphaToMaskInspectorValue),
-                AlphaToMask = GetBool(material, Property.AlphaToMask),
-                ZWrite = GetBool(material, Property.ZWrite),
-                TransparentZWrite = GetBool(material, Property.TransparentZWrite),
-                CullMode = GetEnum<CullMode>(material, Property.CullMode, CullMode.Back),
-                CullModeForward = GetEnum<CullMode>(material, Property.DistortionBlendMode, CullMode.Back),
-                TransparentCullMode = GetEnum<TransparentCullMode>(material, Property.TransparentCullMode, TransparentCullMode.Back),
-                OpaqueCullMode = GetEnum<OpaqueCullMode>(material, Property.OpaqueCullMode, OpaqueCullMode.Back),
-                ZTestDepthEqualForOpaque = GetInt(material, Property.ZTestDepthEqualForOpaque),
-                ZTestModeDistortion = GetInt(material, Property.ZTestModeDistortion),
-                ZTestTransparent = GetInt(material, Property.ZTestTransparent),
+                ZTestGBuffer = materialProxy.ZTestGBuffer,
 
-                EnableFogOnTransparent = GetBool(material, Property.EnableFogOnTransparent),
-                EnableBlendModePreserveSpecularLighting = GetBool(material, Property.EnableBlendModePreserveSpecularLighting),
+                SupportDecals = materialProxy.SupportDecals,
+                ReceivesSSR = materialProxy.ReceivesSSR,
+                ReceivesSSRTransparent = materialProxy.ReceivesSSRTransparent,
+                AddPrecomputedVelocity = materialProxy.AddPrecomputedVelocity,
 
-                // Double Sided
-                DoubleSidedEnable = GetBool(material, Property.DoubleSidedEnable),
-                DoubleSidedNormalMode = GetEnum<DoubleSidedNormalMode>(material, Property.DoubleSidedNormalMode, DoubleSidedNormalMode.Mirror),
-                DoubleSidedConstants = GetVector4(material, Property.DoubleSidedConstants),
+                RayTracing = materialProxy.RayTracing,
 
-                UVBase = GetEnum<UVBaseMapping>(material, Property.UVBase, UVBaseMapping.UV0),
-                TexWorldScale = GetFloat(material, Property.TexWorldScale),
-                InvTilingScale = GetFloat(material, Property.InvTilingScale),
-                UVMappingMask = GetColor(material, Property.UVMappingMask),
-                NormalMapSpace = GetEnum<NormalMapSpace>(material, Property.NormalMapSpace, NormalMapSpace.TangentSpace),
+                //DiffusionProfile = materialProxy.DiffusionProfile,
+                DiffusionProfileAsset = materialProxy.DiffusionProfileAsset,
+                DiffusionProfileHash = materialProxy.DiffusionProfileHash,
 
-                MaterialID = GetEnum<MaterialId>(material, Property.MaterialID, MaterialId.LitStandard),
-                TransmissionEnable = GetBool(material, Property.TransmissionEnable),
-
-                DisplacementMode = GetEnum<DisplacementMode>(material, Property.DisplacementMode, DisplacementMode.None),
-                DisplacementLockObjectScale = GetFloat(material, Property.DisplacementLockObjectScale),
-                DisplacementLockTilingScale = GetFloat(material, Property.DisplacementLockTilingScale),
-                DepthOffsetEnable = GetBool(material, Property.DepthOffsetEnable),
-
-                // Specular AA
-                EnableGeometricSpecularAA = GetBool(material, Property.EnableGeometricSpecularAA),
-                SpecularAAScreenSpaceVariance = GetFloat(material, Property.SpecularAAScreenSpaceVariance),
-                SpecularAAThreshold = GetFloat(material, Property.SpecularAAThreshold),
-
-                PPDMinSamples = GetFloat(material, Property.PPDMinSamples),
-                PPDMaxSamples = GetFloat(material, Property.PPDMaxSamples),
-                PPDLodThreshold = GetFloat(material, Property.PPDLodThreshold),
-                PPDPrimitiveLength = GetFloat(material, Property.PPDPrimitiveLength),
-                PPDPrimitiveWidth = GetFloat(material, Property.PPDPrimitiveWidth),
-                InvPrimScale = GetVector4(material, Property.InvPrimScale),
-
-                UVDetail = GetEnum<UVDetailMapping>(material, Property.UVDetail, UVDetailMapping.UV0),
-                UVDetailsMappingMask = GetVector4(material, Property.UVDetailsMappingMask),
-                LinkDetailsWithBase = GetBool(material, Property.LinkDetailsWithBase),
-
-                EmissiveColorMode = GetEnum<EmissiveColorMode>(material, Property.EmissiveColorMode, EmissiveColorMode.UseEmissiveMask),
-                UVEmissive = GetEnum<UVEmissiveMapping>(material, Property.UVEmissive, UVEmissiveMapping.UV0),
-                TexWorldScaleEmissive = GetFloat(material, Property.TexWorldScaleEmissive),
-                UVMappingMaskEmissive = GetColor(material, Property.UVMappingMaskEmissive),
-
-                EmissionColor = GetColor(material, Property.EmissionColor),
-
-                MainTex = GetTexture(material, Property.MainTex),
-                Color = GetColor(material, Property.Color),
-                Cutoff = GetFloat(material, Property.Cutoff),
-
-                SupportDecals = GetBool(material, Property.SupportDecals),
-                ReceivesSSR = GetBool(material, Property.ReceivesSSR),
-                ReceivesSSRTransparent = GetBool(material, Property.ReceivesSSRTransparent),
-                AddPrecomputedVelocity = GetBool(material, Property.AddPrecomputedVelocity),
-
-                RayTracing = GetBool(material, Property.RayTracing),
-
-                //DiffusionProfile = GetInt(material, Property.DiffusionProfile),
-                DiffusionProfileAsset = GetVector4(material, Property.DiffusionProfileAsset),
-                DiffusionProfileHash = GetFloat(material, Property.DiffusionProfileHash),
-
-                //UnityLightmaps = GetTexture2DArray(material, Property.UnityLightmaps),
-                //UnityLightmapsInd = GetTexture2DArray(material, Property.UnityLightmapsInd),
-                //UnityShadowMasks = GetTexture2DArray(material, Property.UnityShadowMasks),
+                //UnityLightmaps = materialProxy.UnityLightmaps,
+                //UnityLightmapsInd = materialProxy.UnityLightmapsInd,
+                //UnityShadowMasks = materialProxy.UnityShadowMasks,
             };
-        }
-
-        /// <summary>
-        /// Gets bool value.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private static bool GetBool(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return material.GetInt(propertyName) == 1;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Gets color value.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private static Color GetColor(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return material.GetColor(propertyName);
-            }
-            else
-            {
-                return default;
-            }
-        }
-
-        /// <summary>
-        /// Gets enum value.
-        /// </summary>
-        /// <typeparam name="TEnum"></typeparam>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="defaultValue"></param>
-        /// <returns></returns>
-        private static TEnum GetEnum<TEnum>(Material material, string propertyName, TEnum? defaultValue = null) where TEnum : struct
-        {
-            int propertyValue = GetInt(material, propertyName);
-
-            if (Enum.TryParse(propertyValue.ToString(), out TEnum result))
-            {
-                return result;
-            }
-            else if (defaultValue.HasValue)
-            {
-                return defaultValue.Value;
-            }
-            else
-            {
-                return default;
-            }
-        }
-
-        /// <summary>
-        /// Gets float value.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private static float GetFloat(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return material.GetFloat(propertyName);
-            }
-            else
-            {
-                return 0.0f;
-            }
-        }
-
-        /// <summary>
-        /// Gets int value.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private static int GetInt(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return material.GetInt(propertyName);
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
-        /// <summary>
-        /// Gets the Texture.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="defaultValue"></param>
-        /// <returns></returns>
-        private static Texture2D GetTexture(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return (Texture2D)material.GetTexture(propertyName);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Gets the Vector4.
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private static Vector4 GetVector4(Material material, string propertyName)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                return material.GetVector(propertyName);
-            }
-            else
-            {
-                return default;
-            }
         }
     }
 }

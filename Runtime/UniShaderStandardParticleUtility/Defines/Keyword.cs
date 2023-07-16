@@ -9,55 +9,55 @@ namespace UniParticleShader
     /// </summary>
     public class Keyword
     {
-        /// <summary></summary>
+        /// <summary>Flip Book Blending</summary>
         public const string FlipBookBlending = "_FLIPBOOK_BLENDING";
 
-        /// <summary></summary>
+        /// <summary>Two Sided</summary>
         public const string TwoSided = "_TWO_SIDED";
 
-        /// <summary></summary>
+        /// <summary>Fading On</summary>
         public const string FadingOn = "_FADING_ON";
 
-        /// <summary></summary>
+        /// <summary>Distortion On</summary>
         public const string DistortionOn = "_DISTORTION_ON";
 
-        /// <summary></summary>
+        /// <summary>Require UV2</summary>
         public const string RequireUv2 = "_REQUIRE_UV2";
 
-        /// <summary></summary>
+        /// <summary>Effect Bump</summary>
         public const string EffectBump = "EFFECT_BUMP";
 
-        /// <summary></summary>
+        /// <summary>Normal Map</summary>
         public const string NormalMap = "_NORMALMAP";
 
-        /// <summary></summary>
+        /// <summary>Metallic Gloss Map</summary>
         public const string MetallicGlossMap = "_METALLICGLOSSMAP";
 
-        /// <summary></summary>
+        /// <summary>Emission</summary>
         public const string Emission = "_EMISSION";
 
-        /// <summary></summary>
+        /// <summary>Alpha Test On</summary>
         public const string AlphaTestOn = "_ALPHATEST_ON";
 
-        /// <summary></summary>
+        /// <summary>Alpha Blend On</summary>
         public const string AlphaBlendOn = "_ALPHABLEND_ON";
 
-        /// <summary></summary>
+        /// <summary>Alpha Pre Multiply On</summary>
         public const string AlphaPremultiplyOn = "_ALPHAPREMULTIPLY_ON";
 
-        /// <summary></summary>
+        /// <summary>Alpha Overlay On</summary>
         public const string AlphaOverlayOn = "_ALPHAOVERLAY_ON";
 
-        /// <summary></summary>
+        /// <summary>Alpha Modulate On</summary>
         public const string AlphaModulateOn = "_ALPHAMODULATE_ON";
 
-        /// <summary></summary>
+        /// <summary>Color Overlay On</summary>
         public const string ColorOverlayOn = "_COLOROVERLAY_ON";
 
-        /// <summary></summary>
+        /// <summary>Color Color On</summary>
         public const string ColorColorOn = "_COLORCOLOR_ON";
 
-        /// <summary></summary>
+        /// <summary>Color Add/Sub/Diff On</summary>
         public const string ColorAddSubDiffOn = "_COLORADDSUBDIFF_ON";
     }
 }

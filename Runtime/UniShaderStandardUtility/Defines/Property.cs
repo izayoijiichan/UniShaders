@@ -12,79 +12,79 @@ namespace UniStandardShader
         /// <summary>Color</summary>
         public const string Color = "_Color";
 
-        /// <summary>MainTex</summary>
+        /// <summary>Main Texure</summary>
         public const string MainTex = "_MainTex";
 
-        /// <summary>Cutoff</summary>
+        /// <summary>Alpha Cutoff</summary>
         public const string Cutoff = "_Cutoff";
 
         /// <summary>Glossiness</summary>
         public const string Glossiness = "_Glossiness";
 
-        /// <summary>GlossMapScale</summary>
+        /// <summary>GlossMap Scale</summary>
         public const string GlossMapScale = "_GlossMapScale";
 
-        /// <summary>SmoothnessTextureChannel</summary>
+        /// <summary>Smoothness Texture Channel</summary>
         public const string SmoothnessTextureChannel = "_SmoothnessTextureChannel";
 
         /// <summary>Metallic</summary>
         public const string Metallic = "_Metallic";
 
-        /// <summary>MetallicGlossMap</summary>
+        /// <summary>Metallic Gloss Map</summary>
         public const string MetallicGlossMap = "_MetallicGlossMap";
 
-        /// <summary>SpecularHighlights</summary>
+        /// <summary>Specular Highlights</summary>
         public const string SpecularHighlights = "_SpecularHighlights";
 
-        /// <summary>GlossyReflections</summary>
+        /// <summary>Glossy Reflections</summary>
         public const string GlossyReflections = "_GlossyReflections";
 
-        /// <summary>BumpScale</summary>
+        /// <summary>Bump Scale</summary>
         public const string BumpScale = "_BumpScale";
 
-        /// <summary>BumpMap</summary>
+        /// <summary>Bump Map</summary>
         public const string BumpMap = "_BumpMap";
 
         /// <summary>Parallax</summary>
         public const string Parallax = "_Parallax";
 
-        /// <summary>ParallaxMap</summary>
+        /// <summary>Parallax Map</summary>
         public const string ParallaxMap = "_ParallaxMap";
 
-        /// <summary>OcclusionStrength</summary>
+        /// <summary>Occlusion Strength</summary>
         public const string OcclusionStrength = "_OcclusionStrength";
 
-        /// <summary>OcclusionMap</summary>
+        /// <summary>Occlusion Map</summary>
         public const string OcclusionMap = "_OcclusionMap";
 
-        /// <summary>EmissionColor</summary>
+        /// <summary>Emission Color</summary>
         public const string EmissionColor = "_EmissionColor";
 
-        /// <summary>EmissionMap</summary>
+        /// <summary>Emission Map</summary>
         public const string EmissionMap = "_EmissionMap";
 
-        /// <summary>DetailMask</summary>
+        /// <summary>Detail Mask</summary>
         public const string DetailMask = "_DetailMask";
 
-        /// <summary>DetailAlbedoMap</summary>
+        /// <summary>Detail Albedo Map</summary>
         public const string DetailAlbedoMap = "_DetailAlbedoMap";
 
-        /// <summary>DetailNormalMapScale</summary>
+        /// <summary>Detail Normal Map Scale</summary>
         public const string DetailNormalMapScale = "_DetailNormalMapScale";
 
-        /// <summary>DetailNormalMap</summary>
+        /// <summary>Detail Normal Map</summary>
         public const string DetailNormalMap = "_DetailNormalMap";
 
-        /// <summary>UVSec</summary>
+        /// <summary>UV Sec</summary>
         public const string UVSec = "_UVSec";
 
         /// <summary>Mode</summary>
         public const string Mode = "_Mode";
 
-        /// <summary>SrcBlend</summary>
+        /// <summary>Src Blend</summary>
         public const string SrcBlend = "_SrcBlend";
 
-        /// <summary>DstBlend</summary>
+        /// <summary>Dst Blend</summary>
         public const string DstBlend = "_DstBlend";
 
         /// <summary>ZWrite</summary>

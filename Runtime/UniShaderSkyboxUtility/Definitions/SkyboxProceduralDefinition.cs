@@ -26,10 +26,10 @@ namespace UniSkyboxShader
         //[Range(0.0f, 5.0f)]
         public float AtmosphereThickness { get; set; }
 
-        /// <summary>Sky Tint</summary>
+        /// <summary>Sky Tint Color</summary>
         public Color SkyTint { get; set; }
 
-        /// <summary>Ground</summary>
+        /// <summary>Ground Color</summary>
         public Color GroundColor { get; set; }
 
         /// <summary>Exposure</summary>

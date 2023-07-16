@@ -43,11 +43,11 @@ namespace UniUrpShader
 
         /// <summary>Src Blend</summary>
         //[DefaultValue(1.0f)]
-        public float SrcBlend { get; set; }
+        public UnityEngine.Rendering.BlendMode SrcBlend { get; set; }
 
         /// <summary>Dst Blend</summary>
         //[DefaultValue(0.0f)]
-        public float DstBlend { get; set; }
+        public UnityEngine.Rendering.BlendMode DstBlend { get; set; }
 
         /// <summary>ZWrite</summary>
         //[DefaultValue(true)]
@@ -62,7 +62,7 @@ namespace UniUrpShader
 
         #region Obsolete Properties
 
-        /// <summary>Main Tex</summary>
+        /// <summary>Main Texture</summary>
         [Obsolete("Obsolete")]
         public Texture2D MainTex { get; set; }
 

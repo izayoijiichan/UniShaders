@@ -15,7 +15,7 @@ namespace UniSkyboxShader
         /// <typeparam name="T"></typeparam>
         /// <param name="material"></param>
         /// <param name="parameters"></param>
-        public static void SetParametersToMaterial<T>(Material material, T parameters)
+        public static void SetParametersToMaterial<T>(Material material, in T parameters)
         {
             Type type = typeof(T);
 
@@ -46,17 +46,20 @@ namespace UniSkyboxShader
         /// </summary>
         /// <param name="material"></param>
         /// <param name="parameters"></param>
-        private static void SetSkybox6SidedParametersToMaterial(Material material, Skybox6SidedDefinition parameters)
+        private static void SetSkybox6SidedParametersToMaterial(Material material, in Skybox6SidedDefinition parameters)
         {
-            SetColor(material, Property.Tint, parameters.Tint);
-            SetFloat(material, Property.Exposure, parameters.Exposure);
-            SetInt(material, Property.Rotation, parameters.Rotation);
-            SetTexture(material, Property.FrontTex, parameters.FrontTex);
-            SetTexture(material, Property.BackTex, parameters.BackTex);
-            SetTexture(material, Property.LeftTex, parameters.LeftTex);
-            SetTexture(material, Property.RightTex, parameters.RightTex);
-            SetTexture(material, Property.UpTex, parameters.UpTex);
-            SetTexture(material, Property.DownTex, parameters.DownTex);
+            new Skybox6SidedMaterialProxy(material)
+            {
+                Tint = parameters.Tint,
+                Exposure = parameters.Exposure,
+                Rotation = parameters.Rotation,
+                FrontTex = parameters.FrontTex,
+                BackTex = parameters.BackTex,
+                LeftTex = parameters.LeftTex,
+                RightTex = parameters.RightTex,
+                UpTex = parameters.UpTex,
+                DownTex = parameters.DownTex,
+            };
         }
 
         /// <summary>
@@ -64,12 +67,15 @@ namespace UniSkyboxShader
         /// </summary>
         /// <param name="material"></param>
         /// <param name="parameters"></param>
-        private static void SetSkyboxCubemapParametersToMaterial(Material material, SkyboxCubemapDefinition parameters)
+        private static void SetSkyboxCubemapParametersToMaterial(Material material, in SkyboxCubemapDefinition parameters)
         {
-            SetColor(material, Property.Tint, parameters.Tint);
-            SetFloat(material, Property.Exposure, parameters.Exposure);
-            SetInt(material, Property.Rotation, parameters.Rotation);
-            SetCubemap(material, Property.Tex, parameters.Tex);
+            new SkyboxCubemapMaterialProxy(material)
+            {
+                Tint = parameters.Tint,
+                Exposure = parameters.Exposure,
+                Rotation = parameters.Rotation,
+                Tex = parameters.Tex,
+            };
         }
 
         /// <summary>
@@ -77,17 +83,19 @@ namespace UniSkyboxShader
         /// </summary>
         /// <param name="material"></param>
         /// <param name="parameters"></param>
-        private static void SetSkyboxPanoramicParametersToMaterial(Material material, SkyboxPanoramicDefinition parameters)
+        private static void SetSkyboxPanoramicParametersToMaterial(Material material, in SkyboxPanoramicDefinition parameters)
         {
-            SetColor(material, Property.Tint, parameters.Tint);
-            SetFloat(material, Property.Exposure, parameters.Exposure);
-            SetInt(material, Property.Rotation, parameters.Rotation);
-            SetTexture(material, Property.MainTex, parameters.MainTex);
-            SetInt(material, Property.Mapping, (int)parameters.Mapping);
-            SetKeyword(material, Keyword.Mapping6FramesLayout, parameters.Mapping == Mapping.SixFramesLayout);
-            SetInt(material, Property.ImageType, (int)parameters.ImageType);
-            SetBool(material, Property.MirrorOnBack, parameters.MirrorOnBack);
-            SetInt(material, Property.Layout, (int)parameters.Layout);
+            new SkyboxPanoramicMaterialProxy(material)
+            {
+                Tint = parameters.Tint,
+                Exposure = parameters.Exposure,
+                Rotation = parameters.Rotation,
+                MainTex = parameters.MainTex,
+                Mapping = parameters.Mapping,
+                ImageType = parameters.ImageType,
+                MirrorOnBack = parameters.MirrorOnBack,
+                Layout = parameters.Layout,
+            };
         }
 
         /// <summary>
@@ -95,151 +103,18 @@ namespace UniSkyboxShader
         /// </summary>
         /// <param name="material"></param>
         /// <param name="parameters"></param>
-        private static void SetSkyboxProceduralParametersToMaterial(Material material, SkyboxProceduralDefinition parameters)
+        private static void SetSkyboxProceduralParametersToMaterial(Material material, in SkyboxProceduralDefinition parameters)
         {
-            SetSunDisk(material, parameters.SunDisk);
-            SetFloat(material, Property.SunSize, parameters.SunSize);
-            SetInt(material, Property.SunSizeConvergence, parameters.SunSizeConvergence);
-            SetFloat(material, Property.AtmosphereThickness, parameters.AtmosphereThickness);
-            SetColor(material, Property.SkyTint, parameters.SkyTint);
-            SetColor(material, Property.GroundColor, parameters.GroundColor);
-            SetFloat(material, Property.Exposure, parameters.Exposure);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="val"></param>
-        private static void SetBool(Material material, string propertyName, bool val)
-        {
-            if (material.HasProperty(propertyName))
+            new SkyboxProceduralMaterialProxy(material)
             {
-                material.SetInt(propertyName, (val == true) ? 1 : 0);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="val"></param>
-        private static void SetInt(Material material, string propertyName, int val)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                material.SetInt(propertyName, val);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="val"></param>
-        private static void SetFloat(Material material, string propertyName, float val)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                material.SetFloat(propertyName, val);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="color"></param>
-        private static void SetColor(Material material, string propertyName, Color color)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                material.SetColor(propertyName, color);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="texture"></param>
-        private static void SetTexture(Material material, string propertyName, Texture2D texture)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                material.SetTexture(propertyName, texture);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="cubemap"></param>
-        private static void SetCubemap(Material material, string propertyName, Cubemap cubemap)
-        {
-            if (material.HasProperty(propertyName))
-            {
-                material.SetTexture(propertyName, cubemap);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="keyword"></param>
-        /// <param name="required"></param>
-        private static void SetKeyword(Material material, string keyword, bool required)
-        {
-            if (required)
-            {
-                material.EnableKeyword(keyword);
-            }
-            else
-            {
-                material.DisableKeyword(keyword);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="material"></param>
-        /// <param name="sunDisk"></param>
-        public static void SetSunDisk(Material material, SunDisk sunDisk)
-        {
-            SetInt(material, Property.SunDisk, (int)sunDisk);
-
-            switch (sunDisk)
-            {
-                case SunDisk.None:
-                    SetKeyword(material, Keyword.SundiskNone, true);
-                    SetKeyword(material, Keyword.SundiskSimple, false);
-                    SetKeyword(material, Keyword.SundiskHighQuality, false);
-                    break;
-                case SunDisk.Simple:
-                    SetKeyword(material, Keyword.SundiskNone, false);
-                    SetKeyword(material, Keyword.SundiskSimple, true);
-                    SetKeyword(material, Keyword.SundiskHighQuality, false);
-                    break;
-                case SunDisk.HighQuality:
-                    SetKeyword(material, Keyword.SundiskNone, false);
-                    SetKeyword(material, Keyword.SundiskSimple, false);
-                    SetKeyword(material, Keyword.SundiskHighQuality, true);
-                    break;
-                default:
-                    SetKeyword(material, Keyword.SundiskNone, true);
-                    SetKeyword(material, Keyword.SundiskSimple, false);
-                    SetKeyword(material, Keyword.SundiskHighQuality, false);
-                    break;
-            }
+                SunDisk = parameters.SunDisk,
+                SunSize = parameters.SunSize,
+                SunSizeConvergence = parameters.SunSizeConvergence,
+                AtmosphereThickness = parameters.AtmosphereThickness,
+                SkyTint = parameters.SkyTint,
+                GroundColor = parameters.GroundColor,
+                Exposure = parameters.Exposure,
+            };
         }
     }
 }

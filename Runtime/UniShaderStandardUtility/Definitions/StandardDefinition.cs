@@ -40,7 +40,7 @@ namespace UniStandardShader
         //[DefaultValue(0.0f)]
         public float Metallic { get; set; }
 
-        /// <summary>MetallicGlossMap</summary>
+        /// <summary>Metallic Gloss Map</summary>
         public Texture2D MetallicGlossMap { get; set; }
 
         /// <summary>Specular Highlights</summary>
@@ -70,7 +70,7 @@ namespace UniStandardShader
         //[DefaultValue(1.0f)]
         public float OcclusionStrength { get; set; }
 
-        /// <summary>Occlusio nMap</summary>
+        /// <summary>Occlusion Map</summary>
         public Texture2D OcclusionMap { get; set; }
 
         /// <summary>Emission Color</summary>
@@ -99,11 +99,11 @@ namespace UniStandardShader
         /// <summary>Mode</summary>
         public AlphaMode Mode { get; set; }
 
-        ///// <summary>SrcBlend</summary>
-        //public float SrcBlend { get; set; }
+        ///// <summary>Src Blend</summary>
+        //public BlendMode SrcBlend { get; set; }
 
-        ///// <summary>DstBlend</summary>
-        //public float DstBlend { get; set; }
+        ///// <summary>Dst Blend</summary>
+        //public BlendMode DstBlend { get; set; }
 
         ///// <summary>ZWrite</summary>
         //public bool ZWrite { get; set; }

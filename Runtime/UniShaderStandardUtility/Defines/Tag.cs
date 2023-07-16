@@ -9,7 +9,7 @@ namespace UniStandardShader
     /// </summary>
     public class Tag
     {
-        /// <summary>RenderType</summary>
+        /// <summary>Render Type</summary>
         public const string RenderType = "RenderType";
     }
 }

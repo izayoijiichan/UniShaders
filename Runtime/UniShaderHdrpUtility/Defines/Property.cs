@@ -2,8 +2,6 @@
 // @Namespace : UniHdrpShader
 // @Class     : Property
 // ----------------------------------------------------------------------
-using System;
-
 namespace UniHdrpShader
 {
     /// <summary>
@@ -365,8 +363,8 @@ namespace UniHdrpShader
         /// <summary>Distortion Blur Dst Blend</summary>
         public const string DistortionBlurDstBlend = "_DistortionBlurDstBlend";
 
-        /// <summary>DistortionBlurBlendMode</summary>
-        public const string DistortionBlurBlendMode = "_DistortionBlurBlendMode";
+        /// <summary>DistortionBlurBlendOp</summary>
+        public const string DistortionBlurBlendOp = "_DistortionBlurBlendOp";
 
         /// <summary>Distortion Scale</summary>
         public const string DistortionScale = "_DistortionScale";
