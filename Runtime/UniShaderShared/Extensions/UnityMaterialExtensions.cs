@@ -918,7 +918,7 @@ namespace UniShader.Shared
 #if UNITY_2021_2_OR_NEWER
                 material.SetInteger(propertyNameId, setValue);
 #else
-                material SetInt(propertyNameId, setValue);
+                material.SetInt(propertyNameId, setValue);
 #endif
                 return true;
             }
@@ -1009,7 +1009,7 @@ namespace UniShader.Shared
 #if UNITY_2021_2_OR_NEWER
                 material.SetInteger(propertyName, setValue);
 #else
-                material SetInt(propertyName, setValue);
+                material.SetInt(propertyName, setValue);
 #endif
                 return true;
             }

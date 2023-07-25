@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.5.1] - 2023-07-26
+- Fixes
+  - Fixed an error that occurred under Unity version `2021.1`.
+
 ## [1.5.0] - 2023-07-17
 - Features
   - The `Universal Render Pipeline/Particles/Lit` and `Universal Render Pipeline/Particles/Unlit` shaders are now available in `UniUrpParticleShader`.
