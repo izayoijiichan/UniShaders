@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.6.0] - 2023-07-28
+- Fixes
+  - Fixed a rendering setting bug for the Standard shader.
+  - Fixed a rendering setting bug for the URP shader.
+
 ## [1.5.1] - 2023-07-26
 - Fixes
   - Fixed an error that occurred under Unity version `2021.1`.

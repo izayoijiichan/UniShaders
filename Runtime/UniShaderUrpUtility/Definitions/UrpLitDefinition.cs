@@ -55,13 +55,19 @@ namespace UniUrpShader
         /// <summary>Detail Mask</summary>
         public Texture2D DetailMask { get; set; }
 
+        /// <summary>Detail Albedo Map</summary>
+        public Texture2D DetailAlbedoMap { get; set; }
+
         /// <summary>Detail Albedo Map Scale</summary>
         //[Range(0.0f, 2.0f)]
         //[DefaultValue(1.0f)]
         public float DetailAlbedoMapScale { get; set; }
 
-        /// <summary>Detail Albedo Map</summary>
-        public Texture2D DetailAlbedoMap { get; set; }
+        /// <summary>Detail Albedo Map Scale</summary>
+        public Vector2 DetailAlbedoMapScale2 { get; set; }
+
+        /// <summary>Detail Albedo Map Offset</summary>
+        public Vector2 DetailAlbedoMapOffset { get; set; }
 
         /// <summary>Detail Normal Map Scale</summary>
         //[Range(0.0f, 2.0f)]

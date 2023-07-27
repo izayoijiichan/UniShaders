@@ -121,6 +121,13 @@ namespace UniUrpShader
             set => _Material.SetSafeTexture(Property.DetailMask, value);
         }
 
+        /// <summary>Detail Albedo Map</summary>
+        public Texture2D DetailAlbedoMap
+        {
+            get => _Material.GetSafeTexture(Property.DetailAlbedoMap);
+            set => _Material.SetSafeTexture(Property.DetailAlbedoMap, value);
+        }
+
         /// <summary>Detail Albedo Map Scale</summary>
         //[Range(0.0f, 2.0f)]
         //[DefaultValue(1.0f)]
@@ -130,11 +137,18 @@ namespace UniUrpShader
             set => _Material.SetSafeFloat(Property.DetailAlbedoMapScale, PropertyRange.DetailAlbedoMapScale, value);
         }
 
-        /// <summary>Detail Albedo Map</summary>
-        public Texture2D DetailAlbedoMap
+        /// <summary>Detail Albedo Map Scale</summary>
+        public Vector2 DetailAlbedoMapScale2
         {
-            get => _Material.GetSafeTexture(Property.DetailAlbedoMap);
-            set => _Material.SetSafeTexture(Property.DetailAlbedoMap, value);
+            get => _Material.GetSafeTextureScale(Property.DetailAlbedoMap, Vector2.one);
+            set => _Material.SetSafeTextureScale(Property.DetailAlbedoMap, value);
+        }
+
+        /// <summary>Detail Albedo Map Offset</summary>
+        public Vector2 DetailAlbedoMapOffset
+        {
+            get => _Material.GetSafeTextureOffset(Property.DetailAlbedoMap, Vector2.zero);
+            set => _Material.SetSafeTextureOffset(Property.DetailAlbedoMap, value);
         }
 
         /// <summary>Detail Normal Map Scale</summary>

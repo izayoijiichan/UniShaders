@@ -50,7 +50,10 @@ namespace UniUrpShader
                 Blend = parameters.Blend,
                 //SrcBlend = parameters.SrcBlend,
                 //DstBlend = parameters.DstBlend,
+                //SrcBlendAlpha = parameters.SrcBlendAlpha,
+                //DstBlendAlpha = parameters.DstBlendAlpha,
                 //ZWrite = parameters.ZWrite,
+                //AlphaToMask = parameters.AlphaToMask,
 
                 Cull = parameters.Cull,
                 AlphaClip = parameters.AlphaClip,
@@ -59,6 +62,8 @@ namespace UniUrpShader
                 // Base Map
                 BaseColor = parameters.BaseColor,
                 BaseMap = parameters.BaseMap,
+                BaseMapScale = parameters.BaseMapScale,
+                BaseMapOffset = parameters.BaseMapOffset,
 
                 // Editmode Properties
                 QueueOffset = parameters.QueueOffset,
@@ -105,8 +110,10 @@ namespace UniUrpShader
                 // Detail Inputs
                 DetailMask = parameters.DetailMask,
 
-                DetailAlbedoMapScale = parameters.DetailAlbedoMapScale,
                 DetailAlbedoMap = parameters.DetailAlbedoMap,
+                DetailAlbedoMapScale = parameters.DetailAlbedoMapScale,
+                DetailAlbedoMapScale2 = parameters.DetailAlbedoMapScale2,
+                DetailAlbedoMapOffset = parameters.DetailAlbedoMapOffset,
 
                 DetailNormalMapScale = parameters.DetailNormalMapScale,
                 DetailNormalMap = parameters.DetailNormalMap,
@@ -143,7 +150,10 @@ namespace UniUrpShader
                 Blend = parameters.Blend,
                 //SrcBlend = parameters.SrcBlend,
                 //DstBlend = parameters.DstBlend,
+                //SrcBlendAlpha = parameters.SrcBlendAlpha,
+                //DstBlendAlpha = parameters.DstBlendAlpha,
                 //ZWrite = parameters.ZWrite,
+                //AlphaToMask = parameters.AlphaToMask,
 
                 Cull = parameters.Cull,
                 AlphaClip = parameters.AlphaClip,
@@ -152,6 +162,8 @@ namespace UniUrpShader
                 // Base Map
                 BaseColor = parameters.BaseColor,
                 BaseMap = parameters.BaseMap,
+                BaseMapScale = parameters.BaseMapScale,
+                BaseMapOffset = parameters.BaseMapOffset,
 
                 // Editmode Properties
                 QueueOffset = parameters.QueueOffset,
@@ -203,7 +215,10 @@ namespace UniUrpShader
                 Blend = parameters.Blend,
                 //SrcBlend = parameters.SrcBlend,
                 //DstBlend = parameters.DstBlend,
+                //SrcBlendAlpha = parameters.SrcBlendAlpha,
+                //DstBlendAlpha = parameters.DstBlendAlpha,
                 //ZWrite = parameters.ZWrite,
+                //AlphaToMask = parameters.AlphaToMask,
 
                 Cull = parameters.Cull,
                 AlphaClip = parameters.AlphaClip,
@@ -212,6 +227,8 @@ namespace UniUrpShader
                 // Base Map
                 BaseColor = parameters.BaseColor,
                 BaseMap = parameters.BaseMap,
+                BaseMapScale = parameters.BaseMapScale,
+                BaseMapOffset = parameters.BaseMapOffset,
 
                 // Editmode Properties
                 QueueOffset = parameters.QueueOffset,

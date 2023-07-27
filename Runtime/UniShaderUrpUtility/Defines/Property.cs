@@ -2,10 +2,10 @@
 // @Namespace : UniUrpShader
 // @Class     : Property
 // ----------------------------------------------------------------------
-using System;
-
 namespace UniUrpShader
 {
+    using System;
+
     /// <summary>
     /// Property
     /// </summary>
@@ -40,8 +40,17 @@ namespace UniUrpShader
         /// <summary>Dst Blend</summary>
         public const string DstBlend = "_DstBlend";
 
+        /// <summary>Src Blend Alpha</summary>
+        public const string SrcBlendAlpha = "_SrcBlendAlpha";
+
+        /// <summary>Dst Blend Alpha</summary>
+        public const string DstBlendAlpha = "_DstBlendAlpha";
+
         /// <summary>ZWrite</summary>
         public const string ZWrite = "_ZWrite";
+
+        /// <summary>Alpha to Mask</summary>
+        public const string AlphaToMask = "_AlphaToMask";
 
         /// <summary>Queue Offset</summary>
         public const string QueueOffset = "_QueueOffset";

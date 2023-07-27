@@ -32,8 +32,14 @@ namespace UniUrpShader
         /// <summary>Alpha Test On</summary>
         public const string AlphaTestOn = "_ALPHATEST_ON";
 
+        ///// <summary>Alpha Blend On</summary>
+        //public const string AlphaBlendOn = "_ALPHABLEND_ON";
+
         /// <summary>Alpha Pre Multiply On</summary>
         public const string AlphaPreMultiplyOn = "_ALPHAPREMULTIPLY_ON";
+
+        /// <summary>Alpha Pre Modulate On</summary>
+        public const string AlphaModulateOn = "_ALPHAMODULATE_ON";
 
         /// <summary>Emission</summary>
         public const string Emission = "_EMISSION";

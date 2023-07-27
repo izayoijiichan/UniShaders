@@ -17,6 +17,12 @@ namespace UniUrpShader
         /// <summary>Base Map</summary>
         public Texture2D BaseMap { get; set; }
 
+        /// <summary>Base Map Scale</summary>
+        public Vector2 BaseMapScale { get; set; }
+
+        /// <summary>Base Map Offset</summary>
+        public Vector2 BaseMapOffset { get; set; }
+
         /// <summary>Base Color</summary>
         public Color BaseColor { get; set; }
 
@@ -49,9 +55,21 @@ namespace UniUrpShader
         //[DefaultValue(0.0f)]
         public UnityEngine.Rendering.BlendMode DstBlend { get; set; }
 
+        /// <summary>Src Blend Alpha</summary>
+        //[DefaultValue(1.0f)]
+        public UnityEngine.Rendering.BlendMode SrcBlendAlpha { get; set; }
+
+        /// <summary>Dst Blend Alpha</summary>
+        //[DefaultValue(0.0f)]
+        public UnityEngine.Rendering.BlendMode DstBlendAlpha { get; set; }
+
         /// <summary>ZWrite</summary>
         //[DefaultValue(true)]
         public bool ZWrite { get; set; }
+
+        /// <summary>Alpha to Mask</summary>
+        //[DefaultValue(false)]
+        public bool AlphaToMask { get; set; }
 
         /// <summary>Queue Offset</summary>
         //[Range(-50, 50)]

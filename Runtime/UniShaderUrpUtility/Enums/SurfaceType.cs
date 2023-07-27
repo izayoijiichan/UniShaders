@@ -7,9 +7,9 @@ namespace UniUrpShader
     /// <summary>Surface Type</summary>
     public enum SurfaceType
     {
-        /// <summary></summary>
+        /// <summary>Opaque surfaces</summary>
         Opaque = 0,
-        /// <summary></summary>
+        /// <summary>Transparent surfaces</summary>
         Transparent = 1,
     }
 }

@@ -7,8 +7,8 @@ namespace UniStandardShader
     /// <summary>Smoothness texture channel</summary>
     public enum SmoothnessTextureChannel
     {
-        /// <summary>Metallic Alpha</summary>
-        MetallicAlpha = 0,
+        /// <summary>Specular Metallic Alpha</summary>
+        SpecularMetallicAlpha = 0,
         /// <summary>Albedo Alpha</summary>
         AlbedoAlpha = 1,
     }

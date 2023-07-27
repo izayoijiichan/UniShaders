@@ -7,6 +7,7 @@ namespace UniUrpShader
     using System;
     using UniShader.Shared;
     using UnityEngine;
+    using UnityEngine.Rendering;
 
     /// <summary>
     /// Basic URP Material Proxy
@@ -27,6 +28,20 @@ namespace UniUrpShader
         {
             get => _Material.GetSafeTexture(Property.BaseMap);
             set => _Material.SetSafeTexture(Property.BaseMap, value);
+        }
+
+        /// <summary>Base Map Scale</summary>
+        public Vector2 BaseMapScale
+        {
+            get => _Material.GetSafeTextureScale(Property.BaseMap, Vector2.one);
+            set => _Material.SetSafeTextureScale(Property.BaseMap, value);
+        }
+
+        /// <summary>Base Map Offset</summary>
+        public Vector2 BaseMapOffset
+        {
+            get => _Material.GetSafeTextureOffset(Property.BaseMap, Vector2.zero);
+            set => _Material.SetSafeTextureOffset(Property.BaseMap, value);
         }
 
         /// <summary>Base Color</summary>
@@ -74,28 +89,57 @@ namespace UniUrpShader
         public bool AlphaClip
         {
             get => _Material.GetSafeBool(Property.AlphaClip, false);
-            set => _Material.SetSafeBool(Property.AlphaClip, value);
+            set => SetAlphaClip(value);
         }
 
         /// <summary>SrcBlend</summary>
         public UnityEngine.Rendering.BlendMode SrcBlend
         {
             get => _Material.GetSafeEnum<UnityEngine.Rendering.BlendMode>(Property.SrcBlend, UnityEngine.Rendering.BlendMode.One);
-            set => _Material.SetSafeInt(Property.SrcBlend, (int)value);
+            private set => _Material.SetSafeInt(Property.SrcBlend, (int)value);
         }
 
         /// <summary>DstBlend</summary>
         public UnityEngine.Rendering.BlendMode DstBlend
         {
             get => _Material.GetSafeEnum<UnityEngine.Rendering.BlendMode>(Property.DstBlend, UnityEngine.Rendering.BlendMode.Zero);
-            set => _Material.SetSafeInt(Property.DstBlend, (int)value);
+            private set => _Material.SetSafeInt(Property.DstBlend, (int)value);
+        }
+
+        /// <summary>Src Blend Alpha</summary>
+        //[DefaultValue(1.0f)]
+        public UnityEngine.Rendering.BlendMode SrcBlendAlpha
+        {
+            get => _Material.GetSafeEnum<UnityEngine.Rendering.BlendMode>(Property.SrcBlendAlpha, UnityEngine.Rendering.BlendMode.One);
+            private set => _Material.SetSafeInt(Property.SrcBlendAlpha, (int)value);
+        }
+
+        /// <summary>Dst Blend Alpha</summary>
+        //[DefaultValue(0.0f)]
+        public UnityEngine.Rendering.BlendMode DstBlendAlpha
+        {
+            get => _Material.GetSafeEnum<UnityEngine.Rendering.BlendMode>(Property.DstBlendAlpha, UnityEngine.Rendering.BlendMode.Zero);
+            private set => _Material.SetSafeInt(Property.DstBlendAlpha, (int)value);
         }
 
         /// <summary>ZWrite</summary>
         public bool ZWrite
         {
             get => _Material.GetSafeBool(Property.ZWrite, true);
-            set => _Material.SetSafeBool(Property.ZWrite, value);
+            private set
+            {
+                _Material.SetSafeBool(Property.ZWrite, value);
+
+                _Material.SetShaderPassEnabled("DepthOnly", value);
+            }
+        }
+
+        /// <summary>Alpha to Mask</summary>
+        //[DefaultValue(false)]
+        public bool AlphaToMask
+        {
+            get => _Material.GetSafeBool(Property.AlphaToMask, false);
+            private set => _Material.SetSafeBool(Property.AlphaToMask, value);
         }
 
         /// <summary>Queue Offset</summary>
@@ -163,21 +207,11 @@ namespace UniUrpShader
         /// Sets the surface type.
         /// </summary>
         /// <param name="surfaceType"></param>
-        /// <param name="blendMode"></param>
-        public void SetSurfaceType(SurfaceType surfaceType, BlendMode? blendMode = null)
+        public void SetSurfaceType(SurfaceType surfaceType)
         {
             _Material.SetSafeInt(Property.Surface, (int)surfaceType);
 
-            if (blendMode.HasValue)
-            {
-                _Material.SetInt(Property.Blend, (int)blendMode);
-
-                SetRenderKeyword(surfaceType, blendMode.Value);
-            }
-            else
-            {
-                SetRenderKeyword(surfaceType, Blend);
-            }
+            SetRenderKeyword(surfaceType, Blend, AlphaClip);
         }
 
         /// <summary>
@@ -188,7 +222,18 @@ namespace UniUrpShader
         {
             _Material.SetSafeInt(Property.Blend, (int)blendMode);
 
-            SetRenderKeyword(Surface, blendMode);
+            SetRenderKeyword(Surface, blendMode, AlphaClip);
+        }
+
+        /// <summary>
+        /// Sets the alpha clip.
+        /// </summary>
+        /// <param name="alphaClip"></param>
+        public void SetAlphaClip(bool alphaClip)
+        {
+            _Material.SetSafeBool(Property.AlphaClip, alphaClip);
+
+            SetRenderKeyword(Surface, Blend, alphaClip);
         }
 
         /// <summary>
@@ -196,70 +241,126 @@ namespace UniUrpShader
         /// </summary>
         /// <param name="surfaceType"></param>
         /// <param name="blendMode"></param>
-        private void SetRenderKeyword(SurfaceType surfaceType, BlendMode blendMode)
+        /// <param name="isAlphaClip"></param>
+        private void SetRenderKeyword(SurfaceType surfaceType, BlendMode blendMode, bool isAlphaClip)
         {
             _Material.SetSafeKeyword(Keyword.SurfaceTypeTransparent, surfaceType == SurfaceType.Transparent);
 
             switch (surfaceType)
             {
                 case SurfaceType.Opaque:
-                    _Material.SetSafeInt(Property.SrcBlend, (int)UnityEngine.Rendering.BlendMode.One);
-                    _Material.SetSafeInt(Property.DstBlend, (int)UnityEngine.Rendering.BlendMode.Zero);
-                    //_Material.SetSafeInt(Property.AlphaSrcBlend, (int)UnityEngine.Rendering.BlendMode.One);
-                    //_Material.SetSafeInt(Property.AlphaDstBlend, (int)UnityEngine.Rendering.BlendMode.Zero);
-                    _Material.SetSafeInt(Property.ZWrite, 1);
-                    //_Material.SetSafeInt(Property.TransparentZWrite, 0);
-                    //_Material.SetKeyword(Keyword.AlphaTestOn, false);
-                    //_Material.SetKeyword(Keyword.AlphaBlendOn, false);
-                    _Material.renderQueue = 2225;  // @notice
+                    SrcBlend = UnityEngine.Rendering.BlendMode.One;
+                    DstBlend = UnityEngine.Rendering.BlendMode.Zero;
+                    SrcBlendAlpha = UnityEngine.Rendering.BlendMode.One;
+                    DstBlendAlpha = UnityEngine.Rendering.BlendMode.Zero;
+                    ZWrite = true;
+
+                    //_Material.SetSafeKeyword(Keyword.AlphaTestOn, false);
+                    //_Material.SetSafeKeyword(Keyword.AlphaBlendOn, false);
+                    //_Material.SetSafeKeyword(Keyword.AlphaPremultiplyOn, false);
+                    //_Material.SetSafeKeyword(Keyword.AlphaModulateOn, false);
+
+                    if (isAlphaClip)
+                    {
+                        AlphaToMask = true;
+
+                        _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.TransparentCutout);
+
+                        _Material.renderQueue = (int)RenderQueue.AlphaTest;
+                    }
+                    else
+                    {
+                        AlphaToMask = false;
+
+                        _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.Opaque);
+
+                        _Material.renderQueue = (int)RenderQueue.Geometry;
+                    }
+
                     break;
 
                 case SurfaceType.Transparent:
                     switch (blendMode)
                     {
                         case BlendMode.Alpha:
-                            _Material.SetSafeInt(Property.SrcBlend, (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                            _Material.SetSafeInt(Property.DstBlend, (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                            //_Material.SetSafeInt(Property.AlphaSrcBlend, (int)UnityEngine.Rendering.BlendMode.One);
-                            //_Material.SetSafeInt(Property.AlphaDstBlend, (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                            _Material.SetSafeInt(Property.ZWrite, 0);
-                            //_Material.SetSafeInt(Property.TransparentZWrite, 0);
-                            //_Material.SetKeyword(Keyword.AlphaTestOn, true);
-                            //_Material.SetKeyword(Keyword.AlphaBlendOn, false);
-                            //_Material.SetKeyword(Keyword.AlphaPremultiplyOn, false);
-                            _Material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
-                            break;
-                        case BlendMode.Additive:
-                            _Material.SetSafeInt(Property.SrcBlend, (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                            _Material.SetSafeInt(Property.DstBlend, (int)UnityEngine.Rendering.BlendMode.One);
-                            //_Material.SetSafeInt(Property.AlphaSrcBlend, (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                            //_Material.SetSafeInt(Property.AlphaDstBlend, (int)UnityEngine.Rendering.BlendMode.One);
-                            _Material.SetSafeInt(Property.ZWrite, 0);
-                            //_Material.SetSafeInt(Property.TransparentZWrite, 0);
-                            //_Material.SetKeyword(Keyword.AlphaTestOn, false);
-                            //_Material.SetKeyword(Keyword.AlphaBlendOn, true);
-                            //_Material.SetKeyword(Keyword.AlphaPremultiplyOn, false);
+                            _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.Transparent);
+
+                            SrcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
+                            DstBlend = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
+                            SrcBlendAlpha = UnityEngine.Rendering.BlendMode.One;
+                            DstBlendAlpha = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
+                            ZWrite = false;
+                            AlphaToMask = false;
+
+                            //_Material.SetSafeKeyword(Keyword.AlphaTestOn, true);
+                            //_Material.SetSafeKeyword(Keyword.AlphaBlendOn, false);
+                            //_Material.SetSafeKeyword(Keyword.AlphaPremultiplyOn, false);
+                            //_Material.SetSafeKeyword(Keyword.AlphaModulateOn, false);
+
                             _Material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
                             break;
                         case BlendMode.Premultiply:
-                            _Material.SetSafeInt(Property.SrcBlend, (int)UnityEngine.Rendering.BlendMode.One);
-                            _Material.SetSafeInt(Property.DstBlend, (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                            //_Material.SetSafeInt(Property.AlphaSrcBlend, (int)UnityEngine.Rendering.BlendMode.One);
-                            //_Material.SetSafeInt(Property.AlphaDstBlend, (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                            _Material.SetSafeInt(Property.ZWrite, 0);
-                            //_Material.SetSafeInt(Property.TransparentZWrite, 0);
-                            //_Material.SetKeyword(Keyword.AlphaTestOn, false);  // @notice true?
-                            //_Material.SetKeyword(Keyword.AlphaBlendOn, false);
-                            //_Material.SetKeyword(Keyword.AlphaPremultiplyOn, true);
+                            _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.Transparent);
+
+                            SrcBlend = UnityEngine.Rendering.BlendMode.One;
+                            DstBlend = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
+                            SrcBlendAlpha = UnityEngine.Rendering.BlendMode.One;
+                            DstBlendAlpha = UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha;
+                            ZWrite = false;
+                            AlphaToMask = false;
+
+                            //_Material.SetSafeKeyword(Keyword.AlphaTestOn, false);
+                            //_Material.SetSafeKeyword(Keyword.AlphaBlendOn, false);
+                            //_Material.SetSafeKeyword(Keyword.AlphaPremultiplyOn, true);
+                            //_Material.SetSafeKeyword(Keyword.AlphaModulateOn, false);
+
                             _Material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+                            break;
+                        case BlendMode.Additive:
+                            _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.Transparent);
+
+                            SrcBlend = UnityEngine.Rendering.BlendMode.SrcAlpha;
+                            DstBlend = UnityEngine.Rendering.BlendMode.One;
+                            SrcBlendAlpha = UnityEngine.Rendering.BlendMode.One;
+                            DstBlendAlpha = UnityEngine.Rendering.BlendMode.One;
+                            ZWrite = false;
+                            AlphaToMask = false;
+
+                            //_Material.SetSafeKeyword(Keyword.AlphaTestOn, false);
+                            //_Material.SetSafeKeyword(Keyword.AlphaBlendOn, true);
+                            //_Material.SetSafeKeyword(Keyword.AlphaPremultiplyOn, false);
+                            //_Material.SetSafeKeyword(Keyword.AlphaModulateOn, false);
+
+                            _Material.renderQueue = (int)RenderQueue.Transparent;
+                            break;
+                        case BlendMode.Multiply:
+                            _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.Transparent);
+
+                            SrcBlend = UnityEngine.Rendering.BlendMode.DstColor;
+                            DstBlend = UnityEngine.Rendering.BlendMode.Zero;
+                            SrcBlendAlpha = UnityEngine.Rendering.BlendMode.Zero;
+                            DstBlendAlpha = UnityEngine.Rendering.BlendMode.One;
+                            ZWrite = false;
+                            AlphaToMask = false;
+
+                            //_Material.SetSafeKeyword(Keyword.AlphaTestOn, false);
+                            //_Material.SetSafeKeyword(Keyword.AlphaBlendOn, false);
+                            //_Material.SetSafeKeyword(Keyword.AlphaPremultiplyOn, false);
+                            //_Material.SetSafeKeyword(Keyword.AlphaModulateOn, true);
+
+                            _Material.renderQueue = (int)RenderQueue.Transparent;
                             break;
                     }
                     break;
             }
 
-            _Material.SetSafeKeyword(Keyword.AlphaTestOn, (surfaceType == SurfaceType.Transparent) && (blendMode == BlendMode.Alpha));
+            _Material.SetSafeKeyword(Keyword.AlphaTestOn, isAlphaClip);
+
+            //_Material.SetSafeKeyword(Keyword.AlphaBlendOn, (surfaceType == SurfaceType.Transparent) && (blendMode == BlendMode.Additive));
 
             _Material.SetSafeKeyword(Keyword.AlphaPreMultiplyOn, (surfaceType == SurfaceType.Transparent) && (blendMode == BlendMode.Premultiply));
+
+            _Material.SetSafeKeyword(Keyword.AlphaModulateOn, (surfaceType == SurfaceType.Transparent) && (blendMode == BlendMode.Multiply));
         }
 
         #endregion

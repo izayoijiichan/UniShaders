@@ -5,17 +5,27 @@
 namespace UniStandardShader
 {
     using UnityEngine;
+    using UnityEngine.Rendering;
 
     /// <summary>
     /// Standard Definition
     /// </summary>
     public class StandardDefinition
     {
+        /// <summary>Alpha Blend Mode</summary>
+        public AlphaBlendMode Mode { get; set; }
+
         /// <summary>Color</summary>
         public Color Color { get; set; }
 
-        /// <summary>Albedo</summary>
+        /// <summary>Main Texture</summary>
         public Texture2D MainTex { get; set; }
+
+        /// <summary>Main Texture Scale</summary>
+        public Vector2 MainTexScale { get; set; }
+
+        /// <summary>Main Texture Offset</summary>
+        public Vector2 MainTexOffset { get; set; }
 
         /// <summary>Alpha Cutoff</summary>
         //[Range(0.0f, 1.0f)]
@@ -85,6 +95,12 @@ namespace UniStandardShader
         /// <summary>Detail Albedo Map x2</summary>
         public Texture2D DetailAlbedoMap { get; set; }
 
+        /// <summary>Detail Albedo Map Scale</summary>
+        public Vector2 DetailAlbedoMapScale { get; set; }
+
+        /// <summary>Detail Albedo Map Offset</summary>
+        public Vector2 DetailAlbedoMapOffset { get; set; }
+
         /// <summary>Detail Normal Map Scale</summary>
         //[Range(0.0f, 1.0f)]
         //[DefaultValue(1.0f)]
@@ -96,16 +112,13 @@ namespace UniStandardShader
         /// <summary>UV Set for secondary textures</summary>
         public UV UVSec { get; set; }
 
-        /// <summary>Mode</summary>
-        public AlphaMode Mode { get; set; }
+        /// <summary>Src Blend</summary>
+        public BlendMode SrcBlend { get; set; }
 
-        ///// <summary>Src Blend</summary>
-        //public BlendMode SrcBlend { get; set; }
+        /// <summary>Dst Blend</summary>
+        public BlendMode DstBlend { get; set; }
 
-        ///// <summary>Dst Blend</summary>
-        //public BlendMode DstBlend { get; set; }
-
-        ///// <summary>ZWrite</summary>
-        //public bool ZWrite { get; set; }
+        /// <summary>ZWrite</summary>
+        public bool ZWrite { get; set; }
     }
 }

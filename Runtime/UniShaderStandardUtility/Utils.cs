@@ -22,6 +22,8 @@ namespace UniStandardShader
                 Mode = materialProxy.Mode,
                 Color = materialProxy.Color,
                 MainTex = materialProxy.MainTex,
+                MainTexScale = materialProxy.MainTexScale,
+                MainTexOffset = materialProxy.MainTexOffset,
                 Cutoff = materialProxy.Cutoff,
                 Glossiness = materialProxy.Glossiness,
                 GlossMapScale = materialProxy.GlossMapScale,
@@ -40,6 +42,8 @@ namespace UniStandardShader
                 EmissionMap = materialProxy.EmissionMap,
                 DetailMask = materialProxy.DetailMask,
                 DetailAlbedoMap = materialProxy.DetailAlbedoMap,
+                DetailAlbedoMapScale = materialProxy.DetailAlbedoMapScale,
+                DetailAlbedoMapOffset = materialProxy.DetailAlbedoMapOffset,
                 DetailNormalMapScale = materialProxy.DetailNormalMapScale,
                 DetailNormalMap = materialProxy.DetailNormalMap,
                 UVSec = materialProxy.UVSec,
@@ -58,6 +62,8 @@ namespace UniStandardShader
                 Mode = parameters.Mode,
                 Color = parameters.Color,
                 MainTex = parameters.MainTex,
+                MainTexOffset = parameters.MainTexOffset,
+                MainTexScale = parameters.MainTexScale,
                 Cutoff = parameters.Cutoff,
                 Glossiness = parameters.Glossiness,
                 GlossMapScale = parameters.GlossMapScale,
@@ -76,6 +82,8 @@ namespace UniStandardShader
                 EmissionMap = parameters.EmissionMap,
                 DetailMask = parameters.DetailMask,
                 DetailAlbedoMap = parameters.DetailAlbedoMap,
+                DetailAlbedoMapScale = parameters.DetailAlbedoMapScale,
+                DetailAlbedoMapOffset = parameters.DetailAlbedoMapOffset,
                 DetailNormalMapScale = parameters.DetailNormalMapScale,
                 DetailNormalMap = parameters.DetailNormalMap,
                 UVSec = parameters.UVSec
@@ -90,7 +98,7 @@ namespace UniStandardShader
         /// </summary>
         /// <param name="material"></param>
         /// <param name="mode"></param>
-        public static void SetMode(Material material, in AlphaMode mode)
+        public static void SetMode(Material material, in AlphaBlendMode mode)
         {
             var materialProxy = new StandardMaterialProxy(material);
 

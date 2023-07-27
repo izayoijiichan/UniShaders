@@ -23,6 +23,13 @@ namespace UniStandardShader
 
         #region Properties
 
+        /// <summary>Alpha Blend Mode</summary>
+        public AlphaBlendMode Mode
+        {
+            get => _Material.GetSafeEnum<AlphaBlendMode>(Property.Mode, AlphaBlendMode.Opaque);
+            set => SetMode(value);
+        }
+
         /// <summary>Color</summary>
         public Color Color
         {
@@ -30,11 +37,25 @@ namespace UniStandardShader
             set => _Material.SetSafeColor(Property.Color, value);
         }
 
-        /// <summary>Albedo</summary>
+        /// <summary>Main Texture</summary>
         public Texture2D MainTex
         {
             get => _Material.GetSafeTexture(Property.MainTex);
             set => _Material.SetSafeTexture(Property.MainTex, value);
+        }
+
+        /// <summary>Main Texture Scale</summary>
+        public Vector2 MainTexScale
+        {
+            get => _Material.GetSafeTextureScale(Property.MainTex, Vector2.one);
+            set => _Material.SetSafeTextureScale(Property.MainTex, value);
+        }
+
+        /// <summary>Main Texture Offset</summary>
+        public Vector2 MainTexOffset
+        {
+            get => _Material.GetSafeTextureOffset(Property.MainTex, Vector2.zero);
+            set => _Material.SetSafeTextureOffset(Property.MainTex, value);
         }
 
         /// <summary>Alpha Cutoff</summary>
@@ -67,7 +88,7 @@ namespace UniStandardShader
         /// <summary>Smoothness texture channel</summary>
         public SmoothnessTextureChannel SmoothnessTextureChannel
         {
-            get => _Material.GetSafeEnum<SmoothnessTextureChannel>(Property.SmoothnessTextureChannel, SmoothnessTextureChannel.MetallicAlpha);
+            get => _Material.GetSafeEnum<SmoothnessTextureChannel>(Property.SmoothnessTextureChannel, SmoothnessTextureChannel.SpecularMetallicAlpha);
             set => _Material.SetSafeInt(Property.SmoothnessTextureChannel, (int)value);
         }
 
@@ -201,6 +222,20 @@ namespace UniStandardShader
             }
         }
 
+        /// <summary>Detail Albedo Map Scale</summary>
+        public Vector2 DetailAlbedoMapScale
+        {
+            get => _Material.GetSafeTextureScale(Property.DetailAlbedoMap, Vector2.one);
+            set => _Material.SetSafeTextureScale(Property.DetailAlbedoMap, value);
+        }
+
+        /// <summary>Detail Albedo Map Offset</summary>
+        public Vector2 DetailAlbedoMapOffset
+        {
+            get => _Material.GetSafeTextureOffset(Property.DetailAlbedoMap, Vector2.zero);
+            set => _Material.SetSafeTextureOffset(Property.DetailAlbedoMap, value);
+        }
+
         /// <summary>Detail Normal Map Scale</summary>
         //[Range(0.0f, 1.0f)]
         //[DefaultValue(1.0f)]
@@ -226,13 +261,6 @@ namespace UniStandardShader
         {
             get => _Material.GetSafeEnum<UV>(Property.UVSec, UV.UV0);
             set => _Material.SetSafeInt(Property.UVSec, (int)value);
-        }
-
-        /// <summary>Mode</summary>
-        public AlphaMode Mode
-        {
-            get => _Material.GetSafeEnum<AlphaMode>(Property.Mode, AlphaMode.Opaque);
-            set => SetMode(value);
         }
 
         /// <summary>Src Blend</summary>
@@ -314,13 +342,13 @@ namespace UniStandardShader
         /// Sets the mode.
         /// </summary>
         /// <param name="mode"></param>
-        public void SetMode(in AlphaMode mode)
+        public void SetMode(in AlphaBlendMode mode)
         {
             _Material.SetSafeInt(Property.Mode, (int)mode);
 
             switch (mode)
             {
-                case AlphaMode.Opaque:
+                case AlphaBlendMode.Opaque:
                     _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.Opaque);
 
                     SrcBlend = BlendMode.One;
@@ -334,7 +362,21 @@ namespace UniStandardShader
                     _Material.renderQueue = -1;
                     break;
 
-                case AlphaMode.Blend:
+                case AlphaBlendMode.Cutout:
+                    _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.TransparentCutout);
+
+                    SrcBlend = BlendMode.One;
+                    DstBlend = BlendMode.Zero;
+                    ZWrite = true;
+
+                    _Material.SetSafeKeyword(Keyword.AlphaTestOn, true);
+                    _Material.SetSafeKeyword(Keyword.AlphaBlendOn, false);
+                    _Material.SetSafeKeyword(Keyword.AlphaPreMultiplyOn, false);
+
+                    _Material.renderQueue = 2450;
+                    break;
+
+                case AlphaBlendMode.Fade:
                     _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.Transparent);
 
                     SrcBlend = BlendMode.SrcAlpha;
@@ -348,18 +390,18 @@ namespace UniStandardShader
                     _Material.renderQueue = 3000;
                     break;
 
-                case AlphaMode.Mask:
-                    _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.TransparentCutout);
+                case AlphaBlendMode.Transparent:
+                    _Material.SetOverrideTag(Tag.RenderType, RenderTypeValue.Transparent);
 
                     SrcBlend = BlendMode.One;
-                    DstBlend = BlendMode.Zero;
-                    ZWrite = true;
+                    DstBlend = BlendMode.OneMinusSrcAlpha;
+                    ZWrite = false;
 
-                    _Material.SetSafeKeyword(Keyword.AlphaTestOn, true);
+                    _Material.SetSafeKeyword(Keyword.AlphaTestOn, false);
                     _Material.SetSafeKeyword(Keyword.AlphaBlendOn, false);
                     _Material.SetSafeKeyword(Keyword.AlphaPreMultiplyOn, true);
 
-                    _Material.renderQueue = 2450;
+                    _Material.renderQueue = 3000;
                     break;
             }
         }

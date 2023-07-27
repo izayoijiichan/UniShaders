@@ -57,7 +57,10 @@ namespace UniUrpShader
 
                 SrcBlend = materialProxy.SrcBlend,
                 DstBlend = materialProxy.DstBlend,
+                SrcBlendAlpha = materialProxy.SrcBlendAlpha,
+                DstBlendAlpha = materialProxy.DstBlendAlpha,
                 ZWrite = materialProxy.ZWrite,
+                AlphaToMask = materialProxy.AlphaToMask,
 
                 AlphaClip = materialProxy.AlphaClip,
                 Cutoff = materialProxy.Cutoff,
@@ -67,6 +70,8 @@ namespace UniUrpShader
                 // Base Map
                 BaseColor = materialProxy.BaseColor,
                 BaseMap = materialProxy.BaseMap,
+                BaseMapScale = materialProxy.BaseMapScale,
+                BaseMapOffset = materialProxy.BaseMapOffset,
 
                 // Metallic Gloss Map
                 Metallic = materialProxy.Metallic,
@@ -99,8 +104,10 @@ namespace UniUrpShader
 
                 // Detail Inputs
                 DetailMask = materialProxy.DetailMask,
-                DetailAlbedoMapScale = materialProxy.DetailAlbedoMapScale,
                 DetailAlbedoMap = materialProxy.DetailAlbedoMap,
+                DetailAlbedoMapScale = materialProxy.DetailAlbedoMapScale,
+                DetailAlbedoMapScale2 = materialProxy.DetailAlbedoMapScale2,
+                DetailAlbedoMapOffset = materialProxy.DetailAlbedoMapOffset,
                 DetailNormalMapScale = materialProxy.DetailNormalMapScale,
                 DetailNormalMap = materialProxy.DetailNormalMap,
 
@@ -142,7 +149,10 @@ namespace UniUrpShader
 
                 SrcBlend = materialProxy.SrcBlend,
                 DstBlend = materialProxy.DstBlend,
+                SrcBlendAlpha = materialProxy.SrcBlendAlpha,
+                DstBlendAlpha = materialProxy.DstBlendAlpha,
                 ZWrite = materialProxy.ZWrite,
+                AlphaToMask = materialProxy.AlphaToMask,
 
                 AlphaClip = materialProxy.AlphaClip,
                 Cutoff = materialProxy.Cutoff,
@@ -154,6 +164,8 @@ namespace UniUrpShader
                 // Base Map
                 BaseColor = materialProxy.BaseColor,
                 BaseMap = materialProxy.BaseMap,
+                BaseMapScale = materialProxy.BaseMapScale,
+                BaseMapOffset = materialProxy.BaseMapOffset,
 
                 // Specular Gloss Map
                 Smoothness = materialProxy.Smoothness,
@@ -208,7 +220,10 @@ namespace UniUrpShader
 
                 SrcBlend = materialProxy.SrcBlend,
                 DstBlend = materialProxy.DstBlend,
+                SrcBlendAlpha = materialProxy.SrcBlendAlpha,
+                DstBlendAlpha = materialProxy.DstBlendAlpha,
                 ZWrite = materialProxy.ZWrite,
+                AlphaToMask = materialProxy.AlphaToMask,
 
                 AlphaClip = materialProxy.AlphaClip,
                 Cutoff = materialProxy.Cutoff,
@@ -218,6 +233,8 @@ namespace UniUrpShader
                 // Base Map
                 BaseColor = materialProxy.BaseColor,
                 BaseMap = materialProxy.BaseMap,
+                BaseMapScale = materialProxy.BaseMapScale,
+                BaseMapOffset = materialProxy.BaseMapOffset,
 
                 // Editmode Properties
                 QueueOffset = materialProxy.QueueOffset,
