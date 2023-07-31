@@ -2,7 +2,7 @@
   "name": "com.izayoi.unishaders",
   "displayName": "UniShaders",
   "description": "UniShaders is utility scripts to get/set Unity shader parameters. (standard, particle, skybox HDRP, URP)",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "type": "tool",
   "category": "",
   "keywords": [

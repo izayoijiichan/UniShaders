@@ -12,7 +12,7 @@ namespace UniStandardShader
         /// <summary>Color</summary>
         public const string Color = "_Color";
 
-        /// <summary>Main Texure</summary>
+        /// <summary>Main Texture</summary>
         public const string MainTex = "_MainTex";
 
         /// <summary>Alpha Cutoff</summary>

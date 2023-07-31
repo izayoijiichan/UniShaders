@@ -12,8 +12,8 @@ namespace UniUrpParticleShader
         /// <summary>Surface Type Transparent</summary>
         public const string SurfaceTypeTransparent = "_SURFACE_TYPE_TRANSPARENT";
 
-        /// <summary>Reveive Shadows Off</summary>
-        public const string ReveiveShadowsOff = "_RECEIVE_SHADOWS_OFF";
+        /// <summary>Receive Shadows Off</summary>
+        public const string ReceiveShadowsOff = "_RECEIVE_SHADOWS_OFF";
 
         ///// <summary>Two Sided</summary>
         //public const string TwoSided = "_TWO_SIDED";

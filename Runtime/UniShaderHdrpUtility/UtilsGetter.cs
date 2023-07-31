@@ -253,7 +253,7 @@ namespace UniHdrpShader
                 NormalMap = materialProxy.NormalMap,
                 NormalScale = materialProxy.NormalScale,
 
-                // Ambient Occulusion
+                // Ambient Occlusion
                 MaskMap = materialProxy.MaskMap,
                 LightmapUV = materialProxy.LightmapUV,
 
@@ -339,7 +339,7 @@ namespace UniHdrpShader
                 SmoothnessRemapMin = materialProxy.SmoothnessRemapMin,
                 SmoothnessRemapMax = materialProxy.SmoothnessRemapMax,
 
-                // Ambient Occulusion
+                // Ambient Occlusion
                 MaskMap = materialProxy.MaskMap,
                 AORemapMin = materialProxy.AORemapMin,
                 AORemapMax = materialProxy.AORemapMax,

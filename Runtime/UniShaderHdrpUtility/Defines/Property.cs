@@ -351,7 +351,7 @@ namespace UniHdrpShader
         /// <summary>Distortion Blend Mode</summary>
         public const string DistortionBlendMode = "_DistortionBlendMode";
 
-        /// <summary>Distortio Src Blend</summary>
+        /// <summary>Distortion Src Blend</summary>
         public const string DistortionSrcBlend = "_DistortionSrcBlend";
 
         /// <summary>Distortion Dst Blend</summary>
@@ -399,7 +399,7 @@ namespace UniHdrpShader
         /// <summary>Refraction Model</summary>
         public const string RefractionModel = "_RefractionModel";
 
-        /// <summary>Ior</summary>
+        /// <summary>Index of Refraction</summary>
         public const string Ior = "_Ior";
 
         /// <summary>Transmittance Color</summary>

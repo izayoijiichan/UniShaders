@@ -144,7 +144,7 @@ namespace UniHdrpShader
         /// <summary>Material Feature Clear Coat</summary>
         public const string MaterialFeatureClearCoat = "_MATERIAL_FEATURE_CLEAR_COAT";
 
-        /// <summary>Material Feature Iridscence</summary>
+        /// <summary>Material Feature Iridescence</summary>
         public const string MaterialFeatureIridscence = "_MATERIAL_FEATURE_IRIDESCENCE";
 
         /// <summary>Material Feature Specular Color</summary>

@@ -104,7 +104,7 @@ namespace UniUrpShader
             {
                 _Material.SetSafeBool(Property.ReceiveShadows, value);
 
-                _Material.SetSafeKeyword(Keyword.ReveiveShadowsOff, value == false);
+                _Material.SetSafeKeyword(Keyword.ReceiveShadowsOff, value == false);
             }
         }
 

@@ -58,11 +58,11 @@ namespace UniHdrpShader
         //[DefaultValue(1.0f)]
         public static FloatRangeDefault SmoothnessRemapMax = new FloatRangeDefault(float.MinValue, float.MaxValue, 1.0f);
 
-        /// <summary>Ambient Occulusion Remapping Min</summary>
+        /// <summary>Ambient Occlusion Remapping Min</summary>
         //[DefaultValue(0.0f)]
         public static FloatRangeDefault AORemapMin = new FloatRangeDefault(float.MinValue, float.MaxValue, 0.0f);
 
-        /// <summary>Ambient Occulusion Remapping Max</summary>
+        /// <summary>Ambient Occlusion Remapping Max</summary>
         //[DefaultValue(1.0f)]
         public static FloatRangeDefault AORemapMax = new FloatRangeDefault(float.MinValue, float.MaxValue, 1.0f);
 

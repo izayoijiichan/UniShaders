@@ -17,10 +17,10 @@ namespace UniUrpShader
         /// <summary>Parallax Map</summary>
         public const string ParallaxMap = "_PARALLAXMAP";
 
-        /// <summary>Reveive Shadows Off</summary>
-        public const string ReveiveShadowsOff = "_RECEIVE_SHADOWS_OFF";
+        /// <summary>Receive Shadows Off</summary>
+        public const string ReceiveShadowsOff = "_RECEIVE_SHADOWS_OFF";
 
-        /// <summary>Detail Mulx 2</summary>
+        /// <summary>Detail Multiply x2</summary>
         public const string DetailMulx2 = "_DETAIL_MULX2";
 
         /// <summary>Detail Scaled</summary>
@@ -96,13 +96,13 @@ namespace UniUrpShader
         /// <summary>Screen Space Occlusion</summary>
         public const string ScreenSpaceOcclusion = "_SCREEN_SPACE_OCCLUSION";
 
-        /// <summary>Dbuffer Mrt 1</summary>
+        /// <summary>DBuffer Multiple Render Targets 1</summary>
         public const string DbufferMrt1 = "_DBUFFER_MRT1";
 
-        /// <summary>Dbuffer Mrt 2</summary>
+        /// <summary>DBuffer Multiple Render Targets 2</summary>
         public const string DbufferMrt2 = "_DBUFFER_MRT2";
 
-        /// <summary>Dbuffer Mrt 3</summary>
+        /// <summary>DBuffer Multiple Render Targets 3</summary>
         public const string DbufferMrt3 = "_DBUFFER_MRT3";
 
         /// <summary>Light Layers</summary>

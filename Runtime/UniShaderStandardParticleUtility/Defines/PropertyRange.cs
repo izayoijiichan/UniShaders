@@ -23,16 +23,16 @@ namespace UniParticleShader
         /// <summary>Normal Map Scale</summary>
         public static FloatRangeDefault BumpScale = new FloatRangeDefault(0.0f, 1.0f, 1.0f);
 
-        /// <summary>Soft Particles Near Fade Disance</summary>
+        /// <summary>Soft Particles Near Fade Distance</summary>
         public static FloatRangeDefault SoftParticlesNearFadeDistance = new FloatRangeDefault(0.0f, float.MaxValue, 0.0f);
 
-        /// <summary>Soft Particles Far Fade Disance</summary>
+        /// <summary>Soft Particles Far Fade Distance</summary>
         public static FloatRangeDefault SoftParticlesFarFadeDistance = new FloatRangeDefault(0.0f, float.MaxValue, 1.0f);
 
-        /// <summary>Camera Near Fade Disance</summary>
+        /// <summary>Camera Near Fade Distance</summary>
         public static FloatRangeDefault CameraNearFadeDistance = new FloatRangeDefault(0.0f, float.MaxValue, 1.0f);
 
-        /// <summary>Camera Far Fade Disance</summary>
+        /// <summary>Camera Far Fade Distance</summary>
         public static FloatRangeDefault CameraFarFadeDistance = new FloatRangeDefault(0.0f, float.MaxValue, 2.0f);
 
         /// <summary>Distortion Blend</summary>

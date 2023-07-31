@@ -9,7 +9,7 @@ namespace UniUrpShader
     using UnityEngine;
 
     /// <summary>
-    /// URP Sinple Lit Material Proxy
+    /// URP Simple Lit Material Proxy
     /// </summary>
     /// <remarks>
     /// com.unity.render-pipelines.universal

@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.6.1] - 2023-08-01
+- Fixes
+  - Fixed typo.
+
 ## [1.6.0] - 2023-07-28
 - Fixes
   - Fixed a rendering setting bug for the Standard shader.

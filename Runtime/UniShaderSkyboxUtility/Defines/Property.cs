@@ -20,22 +20,22 @@ namespace UniSkyboxShader
 
         #region 6 Sided
 
-        /// <summary>Front Texure</summary>
+        /// <summary>Front Texture</summary>
         public const string FrontTex = "_FrontTex";
 
-        /// <summary>Back Texure</summary>
+        /// <summary>Back Texture</summary>
         public const string BackTex = "_BackTex";
 
-        /// <summary>Left Texure</summary>
+        /// <summary>Left Texture</summary>
         public const string LeftTex = "_LeftTex";
 
-        /// <summary>Right Texure</summary>
+        /// <summary>Right Texture</summary>
         public const string RightTex = "_RightTex";
 
-        /// <summary>Up Texure</summary>
+        /// <summary>Up Texture</summary>
         public const string UpTex = "_UpTex";
 
-        /// <summary>Down Texure</summary>
+        /// <summary>Down Texture</summary>
         public const string DownTex = "_DownTex";
 
         #endregion
@@ -49,7 +49,7 @@ namespace UniSkyboxShader
 
         #region Panoramic
 
-        /// <summary>Main Texure</summary>
+        /// <summary>Main Texture</summary>
         public const string MainTex = "_MainTex";
 
         /// <summary>Mapping</summary>

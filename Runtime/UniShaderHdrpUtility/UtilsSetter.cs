@@ -249,7 +249,7 @@ namespace UniHdrpShader
                 NormalMap = parameters.NormalMap,
                 NormalScale = parameters.NormalScale,
 
-                // Ambient Occulusion
+                // Ambient Occlusion
                 MaskMap = parameters.MaskMap,
                 LightmapUV = parameters.LightmapUV,
 
@@ -333,7 +333,7 @@ namespace UniHdrpShader
                 SmoothnessRemapMin = parameters.SmoothnessRemapMin,
                 SmoothnessRemapMax = parameters.SmoothnessRemapMax,
 
-                // Ambient Occulusion
+                // Ambient Occlusion
                 MaskMap = parameters.MaskMap,
                 AORemapMin = parameters.AORemapMin,
                 AORemapMax = parameters.AORemapMax,

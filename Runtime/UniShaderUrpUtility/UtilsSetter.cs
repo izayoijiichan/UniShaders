@@ -84,7 +84,7 @@ namespace UniUrpShader
                 Smoothness = parameters.Smoothness,
                 SmoothnessTextureChannel = parameters.SmoothnessTextureChannel,
 
-                // Supecular Gloss Map
+                // Specular Gloss Map
                 SpecColor = parameters.SpecColor,
                 SpecGlossMap = parameters.SpecGlossMap,
                 SpecularHighlights = parameters.SpecularHighlights,
@@ -176,7 +176,7 @@ namespace UniUrpShader
                 BlendModePreserveSpecular = parameters.BlendModePreserveSpecular,
                 ReceiveShadows = parameters.ReceiveShadows,
 
-                // Supecular Gloss Map
+                // Specular Gloss Map
                 Smoothness = parameters.Smoothness,
                 SpecColor = parameters.SpecColor,
                 SpecGlossMap = parameters.SpecGlossMap,

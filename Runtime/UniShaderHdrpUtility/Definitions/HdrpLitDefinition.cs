@@ -55,11 +55,11 @@ namespace UniHdrpShader
         //[DefaultValue(1.0f)]
         public float SmoothnessRemapMax { get; set; }
 
-        /// <summary>Ambient Occulusion Remapping Min</summary>
+        /// <summary>Ambient Occlusion Remapping Min</summary>
         //[DefaultValue(0.0f)]
         public float AORemapMin { get; set; }
 
-        /// <summary>Ambient Occulusion Remapping Max</summary>
+        /// <summary>Ambient Occlusion Remapping Max</summary>
         //[DefaultValue(1.0f)]
         public float AORemapMax { get; set; }
 

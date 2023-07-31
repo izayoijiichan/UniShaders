@@ -103,7 +103,7 @@ namespace UniHdrpShader
             set => _Material.SetSafeFloat(Property.SmoothnessRemapMax, PropertyRange.SmoothnessRemapMax, value);
         }
 
-        /// <summary>Ambient Occulusion Remapping Min</summary>
+        /// <summary>Ambient Occlusion Remapping Min</summary>
         //[DefaultValue(0.0f)]
         public float AORemapMin
         {
@@ -111,7 +111,7 @@ namespace UniHdrpShader
             set => _Material.SetSafeFloat(Property.AORemapMin, PropertyRange.AORemapMin, value);
         }
 
-        /// <summary>Ambient Occulusion Remapping Max</summary>
+        /// <summary>Ambient Occlusion Remapping Max</summary>
         //[DefaultValue(1.0f)]
         public float AORemapMax
         {
